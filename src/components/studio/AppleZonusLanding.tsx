@@ -41,12 +41,12 @@ export const AppleZonusLanding: React.FC = () => {
       {/* =========================================================================
           SECTION 1: HERO SECTION
           ========================================================================= */}
-      <section className="relative pt-24 pb-28 md:pt-36 md:pb-40 border-b border-white/[0.08] overflow-hidden">
+      <section className="relative pt-12 pb-20 md:pt-16 md:pb-24 lg:pt-20 lg:pb-28 border-b border-white/[0.08] overflow-hidden">
         {/* Architectural ambient light */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[360px] bg-gradient-to-b from-white/[0.05] to-transparent blur-[140px] pointer-events-none" />
 
         <div className="container mx-auto px-6 max-w-5xl relative z-10">
-          <div className="space-y-8 max-w-3xl">
+          <div className="space-y-6 sm:space-y-7 max-w-3xl">
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full border border-white/[0.12] bg-white/[0.03] text-neutral-400 font-mono text-[11px] uppercase tracking-[0.18em]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#0071E3]" />
