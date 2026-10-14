@@ -180,6 +180,7 @@ export const translations: Record<'en' | 'ru', TranslationType> = {
         'Full telephony & call-tracking setup (CallRail whisper messages, dynamic number insertion)',
         'Direct CRM dispatch sync (Jobber, ServiceTitan, Housecall Pro, or webhook automation)',
         'DNS configuration, SSL certificate generation, and global edge CDN deployment',
+        'Up to 3 rounds of content, photo, and details revisions included before final payment',
         '100% legal code and asset ownership transferred with full administrative credentials',
       ],
     },
@@ -213,9 +214,9 @@ export const translations: Record<'en' | 'ru', TranslationType> = {
         {
           stage: 'Hour 40–48',
           days: 'Step 04',
-          title: 'Live Staging Review & Payment',
-          desc: 'You review the live, working site on your phone. Only when you are 100% satisfied do you pay and we connect your live domain.',
-          milestone: 'Pay Upon Approval',
+          title: 'Live Review, Revisions & Launch',
+          desc: 'You review the live site on your phone. Up to 3 revision rounds are included: we swap in your real job photos, adjust service areas, pricing, and phone numbers. You pay only after full approval.',
+          milestone: 'Up to 3 Revisions Included',
         },
       ],
     },
@@ -253,7 +254,7 @@ export const translations: Record<'en' | 'ru', TranslationType> = {
         submitBtn: 'Build My Website First ($0 Upfront)',
         submittingBtn: 'Transmitting...',
         privacyNotice:
-          '100% Risk-Free Guarantee: You pay nothing until you review and approve your live working website.',
+          '100% Risk-Free Guarantee: You pay nothing until you review your live site and we complete up to 3 rounds of revisions to your total satisfaction.',
       },
     },
     footer: {
@@ -347,6 +348,7 @@ export const translations: Record<'en' | 'ru', TranslationType> = {
         'Настройка телефонии и коллтрекинга (CallRail whisper-сообщения, динамическая подмена номеров)',
         'Прямая синхронизация с CRM диспетчера (Jobber, ServiceTitan, Housecall Pro или webhooks)',
         'Настройка DNS, SSL-сертификатов и глобальное развертывание на CDN (Railway / Vercel)',
+        'До 3 раундов правок и точная подгонка под ваш бизнес (фото ваших работ, зоны, цены) включены до оплаты',
         '100% юридическая передача прав на код и базу данных со всеми административными доступами',
       ],
     },
@@ -380,9 +382,9 @@ export const translations: Record<'en' | 'ru', TranslationType> = {
         {
           stage: 'Час 40–48',
           days: 'Шаг 04',
-          title: 'Проверка живого сайта и оплата',
-          desc: 'Вы лично тестируете готовый сайт со смартфона. Когда всё на 100% утверждено — вы оплачиваете, и мы привязываем ваш основной домен.',
-          milestone: 'Оплата по факту ($0 аванса)',
+          title: 'Проверка, правки и запуск',
+          desc: 'Вы лично тестируете сайт на смартфоне. Включено до 3 раундов правок: заменим фото на ваши реальные объекты, скорректируем города, цены и телефон. Вы оплачиваете только тогда, когда сайт полностью одобрен.',
+          milestone: 'До 3 раундов правок',
         },
       ],
     },
@@ -420,7 +422,7 @@ export const translations: Record<'en' | 'ru', TranslationType> = {
         submitBtn: 'Сделайте мне сайт ($0 предоплаты)',
         submittingBtn: 'Отправка заявки...',
         privacyNotice:
-          '100% гарантия без риска: вы платите только после того, как лично проверите и одобрите готовый сайт.',
+          '100% гарантия без риска: вы платите только после того, как проверите готовый сайт и мы внесем до 3 раундов правок под ваши пожелания.',
       },
     },
     footer: {
