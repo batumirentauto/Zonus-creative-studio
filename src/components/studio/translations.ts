@@ -109,7 +109,7 @@ export const translations: Record<'en' | 'ru', TranslationType> = {
       eyebrow: '48-Hour Rapid Delivery · Zero Upfront Deposit · Zero Homework',
       title: 'High-ticket contractor websites engineered in 48 hours. Zero upfront deposit.',
       subtitle:
-        'We design and deploy high-converting websites for roofing, tree care, and specialty trade businesses across the United States. No tedious 30-page briefs, no homework for you. We build your live website first; you pay only after you review and approve it.',
+        'We design and deploy high-converting websites for companies in the Home & Property Services sector across the United States: construction, remodeling, cleaning, repairs, and specialty trades. No tedious 30-page briefs, no homework for you. We build your live website first; you pay only after you review and approve it.',
       primaryCta: 'Get Your Live Preview ($0 Down)',
       secondaryCta: 'How It Works',
       proofSpeedLabel: 'Rapid Delivery',
@@ -152,12 +152,12 @@ export const translations: Record<'en' | 'ru', TranslationType> = {
         {
           tag: '01 / CONVERSION',
           title: 'High-Ticket Conversion Architecture',
-          desc: 'Tailored for affluent homeowners hiring for $15,000+ roof replacements, $6,000+ hazardous crane tree removals, or foundation restorations. Includes structured Service Area directory pages, upfront estimate calculators, and prominent licensed & insured trust signals.',
+          desc: 'Tailored for affluent clients hiring for $10,000+ construction, remodeling, restoration, and high-ticket service contracts. Includes structured Service Area directory pages, upfront estimate calculators, and prominent licensed & insured trust signals.',
         },
         {
           tag: '02 / SPEED',
           title: 'Sub-Second Speed & Mobile Focus',
-          desc: 'Over 90% of emergency trade searches occur on mobile during severe weather, fallen trees, or sudden leaks. We eliminate render-blocking scripts, providing an interface that loads instantaneously on weak cellular signals and allows homeowners to snap and upload damage photos in seconds.',
+          desc: 'Over 90% of searches for home and property services occur on mobile devices. We eliminate render-blocking scripts, providing an interface that loads instantaneously on weak cellular signals and allows homeowners to snap and upload job photos in seconds.',
         },
         {
           tag: '03 / DISPATCH',
@@ -238,12 +238,13 @@ export const translations: Record<'en' | 'ru', TranslationType> = {
         businessPlaceholder: 'Miller Roofing LLC (or none)',
         tradeLabel: 'Primary Trade / Niche *',
         trades: [
+          { value: 'construction', label: 'General Construction & Remodeling' },
+          { value: 'repair', label: 'Property Repairs & Renovation' },
+          { value: 'cleaning', label: 'Commercial & Residential Cleaning / Power Washing' },
           { value: 'roofing', label: 'Roofing & Storm Restoration' },
           { value: 'tree-service', label: 'Tree Care & Emergency Removal' },
-          { value: 'concrete', label: 'Concrete, Foundations & Flatwork' },
           { value: 'landscaping', label: 'High-End Landscaping & Hardscapes' },
-          { value: 'restoration', label: 'Water & Fire Disaster Restoration' },
-          { value: 'other', label: 'Other High-Ticket Specialty Trade' },
+          { value: 'other', label: 'Other Home & Property Services' },
         ],
         serviceAreaLabel: 'Target Counties & Cities *',
         serviceAreaPlaceholder: 'e.g. Greater Dallas-Fort Worth, TX',
@@ -275,7 +276,7 @@ export const translations: Record<'en' | 'ru', TranslationType> = {
       eyebrow: 'Запуск за 48 часов · Без предоплаты · Без сложных ТЗ',
       title: 'Веб-инфраструктура для американских подрядчиков за 48 часов. Сначала сайт — оплата потом.',
       subtitle:
-        'Создаем скоростные сайты для кровельщиков (Roofing), специалистов по деревьям (Tree Care) и сложных сервисных ниш в США. Никаких длинных ТЗ и опросников — мы делаем всю работу сами. Сначала мы полностью собираем сайт, вы проверяете его в работе, и только потом оплачиваете.',
+        'Создаем скоростные сайты для компаний в сфере Home & Property Services по всей территории США: строительство, ремонт, клининг, благоустройство и обслуживание объектов. Никаких длинных ТЗ и опросников — мы делаем всю работу сами. Сначала мы полностью собираем сайт, вы проверяете его в работе, и только потом оплачиваете.',
       primaryCta: 'Получить готовый сайт ($0 аванса)',
       secondaryCta: 'Как мы работаем',
       proofSpeedLabel: 'Срок реализации',
@@ -318,12 +319,12 @@ export const translations: Record<'en' | 'ru', TranslationType> = {
         {
           tag: '01 / КОНВЕРСИЯ',
           title: 'Архитектура конверсии с высокого чека',
-          desc: 'Адаптировано под состоятельных владельцев домов, заказывающих замену кровли за $15,000+, удаление опасных деревьев автокраном за $6,000+ или ремонт фундамента. Включает посадочные страницы под конкретные города и округа (Service Areas), форму расчета предварительной сметы и акцент на лицензии и страховку.',
+          desc: 'Адаптировано под платежеспособных клиентов, заказывающих строительные, ремонтные, клининговые и сервисные контракты с высоким чеком. Включает посадочные страницы под конкретные города и округа (Service Areas), форму расчета предварительной сметы и акцент на лицензии и страховку.',
         },
         {
           tag: '02 / СКОРОСТЬ',
           title: 'Скорость до 1 секунды и мобильный фокус',
-          desc: 'Более 90% экстренных заявок происходят со смартфонов — во время града, урагана, падения деревьев или протечек. Мы исключили тяжелые скрипты: сайт мгновенно открывается даже при слабом 4G/5G и позволяет клиенту за 10 секунд сфотографировать и прикрепить фото повреждений.',
+          desc: 'Более 90% клиентов ищут строительные, ремонтные и сервисные службы со смартфонов. Мы исключили тяжелые скрипты: сайт мгновенно открывается даже при слабом мобильном интернете и позволяет клиенту за считанные секунды отправить заявку или фото объекта.',
         },
         {
           tag: '03 / ДИСПЕТЧЕР',
@@ -404,12 +405,13 @@ export const translations: Record<'en' | 'ru', TranslationType> = {
         businessPlaceholder: 'Miller Roofing LLC (или пока нет)',
         tradeLabel: 'Основная сфера / Ниша *',
         trades: [
+          { value: 'construction', label: 'Строительство и реконструкция (Construction & Remodeling)' },
+          { value: 'repair', label: 'Ремонтные и отделочные работы (Repairs & Renovation)' },
+          { value: 'cleaning', label: 'Клининг и мойка под давлением (Cleaning & Pressure Washing)' },
           { value: 'roofing', label: 'Кровельные работы и ремонт после стихии (Roofing)' },
           { value: 'tree-service', label: 'Уход за деревьями и спил краном (Tree Service)' },
-          { value: 'concrete', label: 'Бетон, фундаменты и плиты (Concrete & Foundations)' },
-          { value: 'landscaping', label: 'Премиальный ландшафт и хардскейп (Landscaping)' },
-          { value: 'restoration', label: 'Устранение последствий затоплений и пожаров (Restoration)' },
-          { value: 'other', label: 'Другие высокочековые подрядные услуги (Specialty Trade)' },
+          { value: 'landscaping', label: 'Ландшафтный дизайн и благоустройство (Landscaping)' },
+          { value: 'other', label: 'Другие сервисные и подрядные услуги (Home & Property Services)' },
         ],
         serviceAreaLabel: 'Зона обслуживания / Округа и города *',
         serviceAreaPlaceholder: 'например, Dallas-Fort Worth, TX или Miami Metro',
