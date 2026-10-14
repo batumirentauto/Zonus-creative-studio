@@ -41,72 +41,72 @@ export const AppleZonusLanding: React.FC = () => {
       {/* =========================================================================
           SECTION 1: HERO SECTION
           ========================================================================= */}
-      <section className="relative pt-12 pb-20 md:pt-16 md:pb-24 lg:pt-20 lg:pb-28 border-b border-white/[0.08] overflow-hidden">
+      <section className="relative pt-8 pb-12 sm:pt-10 sm:pb-14 md:pt-12 md:pb-16 border-b border-white/[0.08] overflow-hidden">
         {/* Architectural ambient light */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[360px] bg-gradient-to-b from-white/[0.05] to-transparent blur-[140px] pointer-events-none" />
 
         <div className="container mx-auto px-6 max-w-5xl relative z-10">
-          <div className="space-y-6 sm:space-y-7 max-w-3xl">
+          <div className="space-y-4 sm:space-y-5 md:space-y-6 max-w-3xl">
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full border border-white/[0.12] bg-white/[0.03] text-neutral-400 font-mono text-[11px] uppercase tracking-[0.18em]">
+            <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full border border-white/[0.12] bg-white/[0.03] text-neutral-400 font-mono text-[11px] uppercase tracking-[0.16em]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#0071E3]" />
               <span>{t.hero.eyebrow}</span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-[-0.04em] text-white leading-[1.05]">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-semibold tracking-[-0.035em] text-white leading-[1.12]">
               {t.hero.title}
             </h1>
 
             {/* Subheadline */}
-            <p className="text-lg sm:text-xl md:text-2xl text-neutral-400 font-normal leading-relaxed tracking-[-0.01em] max-w-2xl">
+            <p className="text-sm sm:text-base md:text-lg text-neutral-400 font-normal leading-relaxed tracking-[-0.01em] max-w-2xl">
               {t.hero.subtitle}
             </p>
 
             {/* CTAs */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <div className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <Link
                 href="#contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white text-black hover:bg-neutral-200 active:scale-[0.99] transition-all text-sm font-semibold tracking-tight shadow-sm"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white text-black hover:bg-neutral-200 active:scale-[0.99] transition-all text-sm font-semibold tracking-tight shadow-sm"
               >
                 <span>{t.hero.primaryCta}</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="#what-we-build"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/[0.14] bg-white/[0.03] hover:bg-white/[0.07] text-neutral-200 transition-all text-sm font-medium tracking-tight"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full border border-white/[0.14] bg-white/[0.03] hover:bg-white/[0.07] text-neutral-200 transition-all text-sm font-medium tracking-tight"
               >
                 <span>{t.hero.secondaryCta}</span>
               </Link>
             </div>
 
             {/* Proof Points Strip */}
-            <div className="pt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-white/[0.08]">
-              <div className="space-y-1">
-                <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-500 block">
+            <div className="pt-5 grid grid-cols-1 sm:grid-cols-3 gap-3 border-t border-white/[0.08]">
+              <div className="space-y-0.5">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-neutral-500 block">
                   {t.hero.proofSpeedLabel}
                 </span>
-                <p className="text-sm font-medium text-white flex items-center gap-1.5">
+                <p className="text-xs sm:text-[13px] font-medium text-white flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                   {t.hero.proofSpeedVal}
                 </p>
               </div>
 
-              <div className="space-y-1">
-                <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-500 block">
+              <div className="space-y-0.5">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-neutral-500 block">
                   {t.hero.proofDispatcherLabel}
                 </span>
-                <p className="text-sm font-medium text-white flex items-center gap-1.5">
+                <p className="text-xs sm:text-[13px] font-medium text-white flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
                   {t.hero.proofDispatcherVal}
                 </p>
               </div>
 
-              <div className="space-y-1">
-                <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-500 block">
+              <div className="space-y-0.5">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-neutral-500 block">
                   {t.hero.proofOwnershipLabel}
                 </span>
-                <p className="text-sm font-medium text-white flex items-center gap-1.5">
+                <p className="text-xs sm:text-[13px] font-medium text-white flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-neutral-400" />
                   {t.hero.proofOwnershipVal}
                 </p>
