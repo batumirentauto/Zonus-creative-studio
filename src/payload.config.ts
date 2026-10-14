@@ -66,7 +66,7 @@ export default buildConfig({
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins,
-  secret: process.env.PAYLOAD_SECRET,
+  secret: process.env.PAYLOAD_SECRET || 'zonus-creative-studio-super-secret-payload-key-2026',
   sharp,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
