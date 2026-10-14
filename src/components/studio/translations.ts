@@ -106,10 +106,10 @@ export const translations: Record<'en' | 'ru', TranslationType> = {
       callCta: 'Request 48-Hour Preview ($0 Down)',
     },
     hero: {
-      eyebrow: '48-Hour Rapid Delivery · Zero Upfront Deposit · Zero Homework',
-      title: 'High-ticket contractor websites engineered in 48 hours. Zero upfront deposit.',
+      eyebrow: 'Turnkey Websites in 48 Hours · $0 Upfront · Zero Homework',
+      title: 'High-converting websites for US contractors & home services. Built in 48 hours. $0 down.',
       subtitle:
-        'We design and deploy high-converting websites for companies in the Home & Property Services sector across the United States: construction, remodeling, cleaning, repairs, and specialty trades. No tedious 30-page briefs, no homework for you. We build your live website first; you pay only after you review and approve it.',
+        'We build high-converting websites for contractors, remodeling, cleaning, and property service businesses across the United States. No tedious briefs, no homework for you. We write the copy and build your site first — you pay only after you review and approve it on your phone.',
       primaryCta: 'Get Your Live Preview ($0 Down)',
       secondaryCta: 'How It Works',
       proofSpeedLabel: 'Rapid Delivery',
@@ -274,9 +274,9 @@ export const translations: Record<'en' | 'ru', TranslationType> = {
     },
     hero: {
       eyebrow: 'Запуск за 48 часов · Без предоплаты · Без сложных ТЗ',
-      title: 'Веб-инфраструктура для американских подрядчиков за 48 часов. Сначала сайт — оплата потом.',
+      title: 'Сайты для подрядчиков и сервисных компаний в США за 48 часов. Сначала делаем — оплата потом.',
       subtitle:
-        'Создаем скоростные сайты для компаний в сфере Home & Property Services по всей территории США: строительство, ремонт, клининг, благоустройство и обслуживание объектов. Никаких длинных ТЗ и опросников — мы делаем всю работу сами. Сначала мы полностью собираем сайт, вы лично проверяете и одобряете готовый результат, и только потом оплачиваете.',
+        'Делаем сайты для строителей, ремонтных бригад, клининга и сервисных компаний по всей Америке. Никаких ТЗ и анкет — мы пишем тексты и собираем сайт под ключ. Сначала вы проверяете готовый сайт со своего телефона, и только если всё нравится — оплачиваете.',
       primaryCta: 'Получить готовый сайт ($0 аванса)',
       secondaryCta: 'Как мы работаем',
       proofSpeedLabel: 'Срок реализации',
