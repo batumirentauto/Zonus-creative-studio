@@ -4,33 +4,40 @@ import React from 'react'
 
 import type { Header as HeaderType } from '@/payload-types'
 
-import { CMSLink } from '@/components/Link'
 import Link from 'next/link'
-import { SearchIcon } from 'lucide-react'
+import { useLanguage } from '@/providers/Language'
+import { LanguageSwitcher } from '@/components/studio/LanguageSwitcher'
 
 export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
+  const { t } = useLanguage()
+
   return (
-    <nav className="flex items-center gap-6">
-      <div className="hidden md:flex items-center gap-6 text-[13px] font-normal text-neutral-400">
+    <nav className="flex items-center gap-4 sm:gap-6">
+      <div className="hidden lg:flex items-center gap-6 text-[13px] font-normal text-neutral-400">
         <Link href="#what-we-build" className="hover:text-white transition-colors duration-150">
-          What We Build
+          {t.nav.whatWeBuild}
         </Link>
         <Link href="#scope" className="hover:text-white transition-colors duration-150">
-          Scope of Work
+          {t.nav.scope}
         </Link>
         <Link href="#specs" className="hover:text-white transition-colors duration-150">
-          Architecture & Speed
+          {t.nav.specs}
         </Link>
         <Link href="#contact" className="hover:text-white transition-colors duration-150">
-          Direct Contact
+          {t.nav.contact}
         </Link>
       </div>
-      <Link
-        href="#contact"
-        className="inline-flex items-center justify-center px-3.5 py-1.5 text-[12px] font-medium tracking-tight rounded-full bg-white text-black hover:bg-neutral-200 active:scale-[0.98] transition-all duration-150"
-      >
-        Book a 15-Min Scoping Call
-      </Link>
+
+      <div className="flex items-center gap-3">
+        <LanguageSwitcher />
+
+        <Link
+          href="#contact"
+          className="inline-flex items-center justify-center px-3.5 py-1.5 text-[12px] font-medium tracking-tight rounded-full bg-white text-black hover:bg-neutral-200 active:scale-[0.98] transition-all duration-150 whitespace-nowrap"
+        >
+          {t.nav.callCta}
+        </Link>
+      </div>
     </nav>
   )
 }

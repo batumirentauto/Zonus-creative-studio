@@ -6,27 +6,22 @@ import {
   ArrowRight,
   ArrowUpRight,
   Check,
-  CheckCircle2,
-  Clock,
   Layers,
-  Lock,
-  PhoneCall,
-  Server,
-  ShieldCheck,
   Smartphone,
-  Sparkles,
   Workflow,
-  Zap,
 } from 'lucide-react'
+import { useLanguage } from '@/providers/Language'
+import { LanguageSwitcher } from './LanguageSwitcher'
 
 export const AppleZonusLanding: React.FC = () => {
+  const { t, language } = useLanguage()
+
   // Form submission state
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     businessName: '',
-    website: '',
     trade: 'roofing',
     serviceArea: '',
     contact: '',
@@ -47,7 +42,7 @@ export const AppleZonusLanding: React.FC = () => {
           SECTION 1: HERO SECTION
           ========================================================================= */}
       <section className="relative pt-24 pb-28 md:pt-36 md:pb-40 border-b border-white/[0.08] overflow-hidden">
-        {/* Subtle architectural ambient light */}
+        {/* Architectural ambient light */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[360px] bg-gradient-to-b from-white/[0.05] to-transparent blur-[140px] pointer-events-none" />
 
         <div className="container mx-auto px-6 max-w-5xl relative z-10">
@@ -55,17 +50,17 @@ export const AppleZonusLanding: React.FC = () => {
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full border border-white/[0.12] bg-white/[0.03] text-neutral-400 font-mono text-[11px] uppercase tracking-[0.18em]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#0071E3]" />
-              <span>High-Ticket Trade Infrastructure</span>
+              <span>{t.hero.eyebrow}</span>
             </div>
 
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-[-0.04em] text-white leading-[1.05]">
-              Web infrastructure engineered for high-ticket contractors.
+              {t.hero.title}
             </h1>
 
             {/* Subheadline */}
             <p className="text-lg sm:text-xl md:text-2xl text-neutral-400 font-normal leading-relaxed tracking-[-0.01em] max-w-2xl">
-              We design and deploy high-performance websites for roofing, tree care, and specialty trade businesses across the United States. Fast loading, clear architecture, zero agency fluff.
+              {t.hero.subtitle}
             </p>
 
             {/* CTAs */}
@@ -74,14 +69,14 @@ export const AppleZonusLanding: React.FC = () => {
                 href="#contact"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white text-black hover:bg-neutral-200 active:scale-[0.99] transition-all text-sm font-semibold tracking-tight shadow-sm"
               >
-                <span>Start a Project</span>
+                <span>{t.hero.primaryCta}</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="#what-we-build"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/[0.14] bg-white/[0.03] hover:bg-white/[0.07] text-neutral-200 transition-all text-sm font-medium tracking-tight"
               >
-                <span>Review Technical Specs</span>
+                <span>{t.hero.secondaryCta}</span>
               </Link>
             </div>
 
@@ -89,31 +84,31 @@ export const AppleZonusLanding: React.FC = () => {
             <div className="pt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-white/[0.08]">
               <div className="space-y-1">
                 <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-500 block">
-                  Speed Benchmark
+                  {t.hero.proofSpeedLabel}
                 </span>
                 <p className="text-sm font-medium text-white flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                  Sub-second load speed (under 1s)
+                  {t.hero.proofSpeedVal}
                 </p>
               </div>
 
               <div className="space-y-1">
                 <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-500 block">
-                  Dispatcher Sync
+                  {t.hero.proofDispatcherLabel}
                 </span>
                 <p className="text-sm font-medium text-white flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                  Direct CRM & CallRail routing
+                  {t.hero.proofDispatcherVal}
                 </p>
               </div>
 
               <div className="space-y-1">
                 <span className="font-mono text-[11px] uppercase tracking-wider text-neutral-500 block">
-                  Capital Ownership
+                  {t.hero.proofOwnershipLabel}
                 </span>
                 <p className="text-sm font-medium text-white flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-neutral-400" />
-                  100% owned assets (no lock-in)
+                  {t.hero.proofOwnershipVal}
                 </p>
               </div>
             </div>
@@ -128,10 +123,10 @@ export const AppleZonusLanding: React.FC = () => {
         <div className="container mx-auto px-6 max-w-5xl">
           <div className="max-w-2xl mb-16 space-y-4">
             <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-400 block">
-              Market Reality
+              {t.market.eyebrow}
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-[-0.03em] text-white leading-tight">
-              Most contractor websites look like generic templates from 2012. Or bloated WordPress sites that take 7 seconds to load.
+              {t.market.title}
             </h2>
           </div>
 
@@ -140,26 +135,22 @@ export const AppleZonusLanding: React.FC = () => {
             <div className="p-8 sm:p-10 rounded-2xl border border-white/[0.08] bg-[#111115] flex flex-col justify-between space-y-8">
               <div className="space-y-4">
                 <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-400 block">
-                  Standard Agency Model
+                  {t.market.agencyModel}
                 </span>
                 <h3 className="text-xl font-medium text-neutral-300">
-                  The Illusion of Complexity
+                  {t.market.agencyTitle}
                 </h3>
                 <p className="text-sm text-neutral-400 leading-relaxed font-normal">
-                  Typical web marketing agencies sell vague promises, install 40+ unvetted WordPress plugins that create security vulnerabilities, and charge recurring monthly "maintenance fees" for simply keeping the server on. When severe weather hits your market, their shared servers crash.
+                  {t.market.agencyDesc}
                 </p>
               </div>
 
               <ul className="space-y-3 pt-6 border-t border-white/[0.08] text-xs text-neutral-400 font-mono">
-                <li className="flex items-center gap-2">
-                  <span className="text-neutral-600">—</span> 6–10 second mobile load times on cellular 5G
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-neutral-600">—</span> Buried phone numbers behind hamburger menus
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-neutral-600">—</span> Proprietary platform lock-in (Wix / Squarespace)
-                </li>
+                {t.market.agencyPoints.map((pt, idx) => (
+                  <li key={idx} className="flex items-center gap-2">
+                    <span className="text-neutral-600">—</span> {pt}
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -168,30 +159,26 @@ export const AppleZonusLanding: React.FC = () => {
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-white font-medium">
-                    The Zonus Standard
+                    {t.market.zonusModel}
                   </span>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded border border-white/[0.15] bg-white/[0.06] text-neutral-300">
-                    NEXT.JS + PAYLOAD
+                    {t.market.zonusBadge}
                   </span>
                 </div>
                 <h3 className="text-xl font-medium text-white">
-                  Direct Engineering Build
+                  {t.market.zonusTitle}
                 </h3>
                 <p className="text-sm text-neutral-300 leading-relaxed font-normal">
-                  We treat your website as critical revenue infrastructure. You receive a clean, lightweight, bespoke digital asset built on modern TypeScript and edge networks. It renders instantly on any mobile device, inspires immediate credibility with high-net-worth homeowners, and directs inbound calls straight to your dispatcher without friction.
+                  {t.market.zonusDesc}
                 </p>
               </div>
 
               <ul className="space-y-3 pt-6 border-t border-white/[0.08] text-xs text-neutral-200 font-mono">
-                <li className="flex items-center gap-2">
-                  <Check className="w-3.5 h-3.5 text-white" /> Under 1-second Core Web Vitals on mobile
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-3.5 h-3.5 text-white" /> Persistent 1-tap call routing to your office
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-3.5 h-3.5 text-white" /> 100% asset & codebase ownership transferred
-                </li>
+                {t.market.zonusPoints.map((pt, idx) => (
+                  <li key={idx} className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-white" /> {pt}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -205,13 +192,13 @@ export const AppleZonusLanding: React.FC = () => {
         <div className="container mx-auto px-6 max-w-5xl">
           <div className="max-w-2xl mb-16 space-y-4">
             <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-400 block">
-              Core Capabilities
+              {t.capabilities.eyebrow}
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-[-0.03em] text-white leading-tight">
-              Engineered specifically for high-ticket trades.
+              {t.capabilities.title}
             </h2>
             <p className="text-base text-neutral-400 font-normal">
-              Three functional pillars designed for businesses where a single closed client represents $5,000 to $50,000 in top-line revenue.
+              {t.capabilities.subtitle}
             </p>
           </div>
 
@@ -223,15 +210,15 @@ export const AppleZonusLanding: React.FC = () => {
                   <Layers className="w-4 h-4" />
                 </div>
                 <h3 className="text-lg font-semibold text-white tracking-tight">
-                  High-Ticket Conversion Architecture
+                  {t.capabilities.modules[0].title}
                 </h3>
                 <p className="text-sm text-neutral-400 leading-relaxed">
-                  Tailored for affluent homeowners hiring for $15,000+ roof replacements, $6,000+ hazardous crane tree removals, or foundation restorations. Includes structured Service Area directory pages, upfront estimate calculators, and prominent licensed & insured trust signals.
+                  {t.capabilities.modules[0].desc}
                 </p>
               </div>
 
               <div className="pt-4 border-t border-white/[0.06] text-xs font-mono text-neutral-400">
-                01 / CONVERSION
+                {t.capabilities.modules[0].tag}
               </div>
             </div>
 
@@ -242,15 +229,15 @@ export const AppleZonusLanding: React.FC = () => {
                   <Smartphone className="w-4 h-4" />
                 </div>
                 <h3 className="text-lg font-semibold text-white tracking-tight">
-                  Speed & Mobile Execution
+                  {t.capabilities.modules[1].title}
                 </h3>
                 <p className="text-sm text-neutral-400 leading-relaxed">
-                  Over 90% of home service emergencies occur on smartphones during hail storms, fallen trees, or sudden leaks. We eliminate render-blocking scripts, providing an interface that loads instantaneously on weak cellular signals and allows homeowners to snap and upload damage photos in seconds.
+                  {t.capabilities.modules[1].desc}
                 </p>
               </div>
 
               <div className="pt-4 border-t border-white/[0.06] text-xs font-mono text-neutral-400">
-                02 / PERFORMANCE
+                {t.capabilities.modules[1].tag}
               </div>
             </div>
 
@@ -261,15 +248,15 @@ export const AppleZonusLanding: React.FC = () => {
                   <Workflow className="w-4 h-4" />
                 </div>
                 <h3 className="text-lg font-semibold text-white tracking-tight">
-                  Direct Operations Integration
+                  {t.capabilities.modules[2].title}
                 </h3>
                 <p className="text-sm text-neutral-400 leading-relaxed">
-                  Your website directly feeds your existing operational dispatch. We wire incoming calls and quote forms straight into Jobber, ServiceTitan, Housecall Pro, or CallRail with zero manual re-entry. Leads land immediately on the estimator’s tablet or office dispatch screen.
+                  {t.capabilities.modules[2].desc}
                 </p>
               </div>
 
               <div className="pt-4 border-t border-white/[0.06] text-xs font-mono text-neutral-400">
-                03 / INTEGRATION
+                {t.capabilities.modules[2].tag}
               </div>
             </div>
           </div>
@@ -284,38 +271,31 @@ export const AppleZonusLanding: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5 space-y-4">
               <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-400 block">
-                The Deliverable
+                {t.deliverable.eyebrow}
               </span>
               <h2 className="text-3xl sm:text-4xl font-semibold tracking-[-0.03em] text-white leading-tight">
-                What you actually receive. Transparent and complete.
+                {t.deliverable.title}
               </h2>
               <p className="text-sm text-neutral-400 leading-relaxed">
-                No nebulous retainer invoices. We deliver a finished, battle-tested digital property with all documentation and source code handed over to your company.
+                {t.deliverable.desc}
               </p>
               <div className="pt-4">
                 <Link
                   href="#contact"
                   className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-white hover:text-neutral-300 underline underline-offset-4"
                 >
-                  <span>Request Full Project Scope</span>
+                  <span>{t.deliverable.requestScope}</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>
 
             <div className="lg:col-span-7 rounded-2xl border border-white/[0.08] bg-[#111115] p-6 sm:p-8 space-y-4">
-              {[
-                'Custom UI/UX architecture designed specifically for your local market and primary service categories',
-                'Mobile-first responsive build compiled with Next.js App Router and Tailwind CSS',
-                'Service Area directory pages configured for targeted city and county search dominance',
-                'High-intent estimate request funnels with direct photo/file upload for storm or roof damage',
-                'Full telephony & call-tracking setup (CallRail whisper messages, dynamic number insertion)',
-                'Direct CRM dispatch sync (Jobber, ServiceTitan, Housecall Pro, or webhook automation)',
-                'Google Analytics 4, Tag Manager, and Conversion API event tracking configured',
-                'DNS records management, SSL certification, and global edge CDN deployment on Railway / Vercel',
-                '100% legal code and database ownership transferred with full administrative credentials',
-              ].map((item, index) => (
-                <div key={index} className="flex items-start gap-3 text-sm text-neutral-300 py-2.5 border-b border-white/[0.04] last:border-0">
+              {t.deliverable.checklist.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex items-start gap-3 text-sm text-neutral-300 py-2.5 border-b border-white/[0.04] last:border-0"
+                >
                   <Check className="w-4 h-4 text-white shrink-0 mt-0.5" />
                   <span className="leading-snug">{item}</span>
                 </div>
@@ -332,44 +312,22 @@ export const AppleZonusLanding: React.FC = () => {
         <div className="container mx-auto px-6 max-w-5xl">
           <div className="max-w-2xl mb-16 space-y-4">
             <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-400 block">
-              Execution Timeline
+              {t.timeline.eyebrow}
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-[-0.03em] text-white leading-tight">
-              20-day structured deployment. No endless revisions.
+              {t.timeline.title}
             </h2>
             <p className="text-base text-neutral-400 font-normal">
-              A linear 4-stage process with clear sign-offs so your internal team spends less than 3 total hours on calls.
+              {t.timeline.subtitle}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                stage: 'Stage 01',
-                days: 'Day 1–3',
-                title: 'Audit & Discovery',
-                desc: 'Deep teardown of your current traffic, highest-margin service categories, service territories, and primary local competitors.',
-              },
-              {
-                stage: 'Stage 02',
-                days: 'Day 4–8',
-                title: 'Architecture & Copy',
-                desc: 'Structuring the user conversion paths and writing direct, high-credibility copy aimed at US homeowners with substantial home equity.',
-              },
-              {
-                stage: 'Stage 03',
-                days: 'Day 9–16',
-                title: 'Interface & Build',
-                desc: 'Pixel-perfect responsive coding, edge speed benchmarking, CRM webhook wiring, and mobile click-to-call verification.',
-              },
-              {
-                stage: 'Stage 04',
-                days: 'Day 17–20',
-                title: 'QA & Live Deployment',
-                desc: 'Stress testing forms, Google Tag Manager event verification, DNS cutover, and full administrative credential transfer.',
-              },
-            ].map((st, i) => (
-              <div key={i} className="p-6 rounded-2xl border border-white/[0.08] bg-[#111115] flex flex-col justify-between space-y-6">
+            {t.timeline.stages.map((st, i) => (
+              <div
+                key={i}
+                className="p-6 rounded-2xl border border-white/[0.08] bg-[#111115] flex flex-col justify-between space-y-6"
+              >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between text-xs font-mono">
                     <span className="text-white font-medium">{st.stage}</span>
@@ -383,7 +341,7 @@ export const AppleZonusLanding: React.FC = () => {
                   </p>
                 </div>
                 <div className="pt-4 border-t border-white/[0.04] text-[10px] font-mono text-neutral-500 uppercase">
-                  Verified Milestone
+                  {st.milestone}
                 </div>
               </div>
             ))}
@@ -392,7 +350,7 @@ export const AppleZonusLanding: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          SECTION 6: CONTACT & FOOTER (Direct Inquiries)
+          SECTION 6: CONTACT & INQUIRY FORM
           ========================================================================= */}
       <section id="contact" className="py-24 md:py-32 relative">
         <div className="container mx-auto px-6 max-w-5xl">
@@ -400,28 +358,37 @@ export const AppleZonusLanding: React.FC = () => {
             {/* Left Context */}
             <div className="lg:col-span-5 space-y-6">
               <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-400 block">
-                Direct Inquiry
+                {t.contact.eyebrow}
               </span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-[-0.03em] text-white leading-tight">
-                Direct communication. No account managers.
+                {t.contact.title}
               </h2>
               <p className="text-sm sm:text-base text-neutral-400 leading-relaxed font-normal">
-                Tell us what trade you operate, your primary service area, and your current bottleneck. We review your request and reply within 24 hours with an honest scope assessment.
+                {t.contact.desc}
               </p>
 
               <div className="pt-6 border-t border-white/[0.08] space-y-4 text-xs font-mono text-neutral-400">
                 <div>
-                  <span className="text-neutral-600 uppercase block mb-1">Direct Correspondence</span>
-                  <a href="mailto:hello@zonus.co" className="text-white hover:underline text-sm font-sans">
+                  <span className="text-neutral-600 uppercase block mb-1">
+                    {t.contact.directCorrespondence}
+                  </span>
+                  <a
+                    href="mailto:hello@zonus.co"
+                    className="text-white hover:underline text-sm font-sans"
+                  >
                     hello@zonus.co
                   </a>
                 </div>
                 <div>
-                  <span className="text-neutral-600 uppercase block mb-1">Active Timezones</span>
-                  <span className="text-neutral-300">EST · CST · PST (Continental United States)</span>
+                  <span className="text-neutral-600 uppercase block mb-1">
+                    {t.contact.activeTimezones}
+                  </span>
+                  <span className="text-neutral-300">{t.contact.timezonesVal}</span>
                 </div>
                 <div>
-                  <span className="text-neutral-600 uppercase block mb-1">Studio Domain</span>
+                  <span className="text-neutral-600 uppercase block mb-1">
+                    {t.contact.studioDomain}
+                  </span>
                   <span className="text-neutral-300">zonus.co</span>
                 </div>
               </div>
@@ -435,17 +402,17 @@ export const AppleZonusLanding: React.FC = () => {
                     <Check className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-semibold text-white tracking-tight">
-                    Inquiry Received
+                    {t.contact.successTitle}
                   </h3>
                   <p className="text-sm text-neutral-400 max-w-md mx-auto leading-relaxed">
-                    Thank you, <strong className="text-white">{formData.name || 'Contractor'}</strong>. We have logged your details for <strong className="text-white">{formData.businessName || 'your business'}</strong>. A senior engineer will examine your territory and reply within 24 business hours.
+                    {t.contact.successDesc}
                   </p>
                   <button
                     type="button"
                     onClick={() => setFormSubmitted(false)}
                     className="mt-4 px-4 py-2 rounded-full border border-white/[0.1] text-xs font-mono text-neutral-300 hover:text-white"
                   >
-                    Submit another inquiry
+                    {t.contact.resetBtn}
                   </button>
                 </div>
               ) : (
@@ -453,12 +420,12 @@ export const AppleZonusLanding: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-neutral-400 mb-1.5">
-                        Your Full Name *
+                        {t.contact.form.nameLabel}
                       </label>
                       <input
                         required
                         type="text"
-                        placeholder="John Miller"
+                        placeholder={t.contact.form.namePlaceholder}
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         className="w-full px-4 py-3 rounded-lg border border-white/[0.08] bg-[#0A0A0C] text-sm text-white placeholder:text-neutral-600 focus:outline-none focus:border-white/30 transition-all font-sans"
@@ -467,12 +434,12 @@ export const AppleZonusLanding: React.FC = () => {
 
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-neutral-400 mb-1.5">
-                        Company & Current Website *
+                        {t.contact.form.businessLabel}
                       </label>
                       <input
                         required
                         type="text"
-                        placeholder="Miller Roofing LLC (or none)"
+                        placeholder={t.contact.form.businessPlaceholder}
                         value={formData.businessName}
                         onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
                         className="w-full px-4 py-3 rounded-lg border border-white/[0.08] bg-[#0A0A0C] text-sm text-white placeholder:text-neutral-600 focus:outline-none focus:border-white/30 transition-all font-sans"
@@ -483,30 +450,29 @@ export const AppleZonusLanding: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-neutral-400 mb-1.5">
-                        Primary Trade / Niche *
+                        {t.contact.form.tradeLabel}
                       </label>
                       <select
                         value={formData.trade}
                         onChange={(e) => setFormData({ ...formData, trade: e.target.value })}
                         className="w-full px-4 py-3 rounded-lg border border-white/[0.08] bg-[#0A0A0C] text-sm text-white focus:outline-none focus:border-white/30 transition-all font-sans"
                       >
-                        <option value="roofing">Roofing & Storm Restoration</option>
-                        <option value="tree-service">Tree Care & Emergency Removal</option>
-                        <option value="concrete">Concrete, Foundations & Flatwork</option>
-                        <option value="landscaping">High-End Landscaping & Hardscapes</option>
-                        <option value="restoration">Water & Fire Disaster Restoration</option>
-                        <option value="other">Other High-Ticket Specialty Trade</option>
+                        {t.contact.form.trades.map((tr) => (
+                          <option key={tr.value} value={tr.value}>
+                            {tr.label}
+                          </option>
+                        ))}
                       </select>
                     </div>
 
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-neutral-400 mb-1.5">
-                        Target Service Area / Counties *
+                        {t.contact.form.serviceAreaLabel}
                       </label>
                       <input
                         required
                         type="text"
-                        placeholder="e.g. Greater Dallas-Fort Worth, TX"
+                        placeholder={t.contact.form.serviceAreaPlaceholder}
                         value={formData.serviceArea}
                         onChange={(e) => setFormData({ ...formData, serviceArea: e.target.value })}
                         className="w-full px-4 py-3 rounded-lg border border-white/[0.08] bg-[#0A0A0C] text-sm text-white placeholder:text-neutral-600 focus:outline-none focus:border-white/30 transition-all font-sans"
@@ -516,12 +482,12 @@ export const AppleZonusLanding: React.FC = () => {
 
                   <div>
                     <label className="block text-xs font-mono uppercase tracking-wider text-neutral-400 mb-1.5">
-                      Direct Phone or Email *
+                      {t.contact.form.contactLabel}
                     </label>
                     <input
                       required
                       type="text"
-                      placeholder="john@millerroofing.com or (214) 555-0199"
+                      placeholder={t.contact.form.contactPlaceholder}
                       value={formData.contact}
                       onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
                       className="w-full px-4 py-3 rounded-lg border border-white/[0.08] bg-[#0A0A0C] text-sm text-white placeholder:text-neutral-600 focus:outline-none focus:border-white/30 transition-all font-sans"
@@ -534,13 +500,17 @@ export const AppleZonusLanding: React.FC = () => {
                       disabled={isSubmitting}
                       className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white text-black hover:bg-neutral-200 active:scale-[0.99] transition-all text-sm font-semibold tracking-tight disabled:opacity-50"
                     >
-                      <span>{isSubmitting ? 'Transmitting...' : 'Submit Inquiry for Scope Assessment'}</span>
+                      <span>
+                        {isSubmitting
+                          ? t.contact.form.submittingBtn
+                          : t.contact.form.submitBtn}
+                      </span>
                       <ArrowRight className="w-4 h-4" />
                     </button>
                   </div>
 
                   <p className="text-[11px] font-mono text-neutral-500 text-center">
-                    Strict confidentiality guaranteed. We never sell contractor information or run spam sequences.
+                    {t.contact.form.privacyNotice}
                   </p>
                 </form>
               )}
@@ -548,6 +518,12 @@ export const AppleZonusLanding: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Floating convenient language switcher pill for testing and fast toggling */}
+      <div className="fixed bottom-6 right-6 z-40 hidden sm:flex items-center gap-2 p-1.5 pl-3 rounded-full border border-white/[0.15] bg-[#111115]/90 backdrop-blur-md shadow-2xl">
+        <span className="text-[11px] font-mono text-neutral-400">Lang:</span>
+        <LanguageSwitcher />
+      </div>
     </div>
   )
 }

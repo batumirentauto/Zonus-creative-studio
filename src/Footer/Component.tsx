@@ -5,6 +5,7 @@ import React from 'react'
 import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
 import { CMSLink } from '@/components/Link'
 import { Logo } from '@/components/Logo/Logo'
+import { FooterText } from './FooterText.client'
 
 export async function Footer() {
   return (
@@ -15,9 +16,7 @@ export async function Footer() {
           <span className="text-neutral-600">/</span>
           <span className="text-neutral-500">zonus.co</span>
         </div>
-        <div className="text-neutral-500 text-center md:text-right">
-          © {new Date().getFullYear()} Zonus Creative Studio. All rights reserved. Built for performance.
-        </div>
+        <FooterText />
       </div>
     </footer>
   )
