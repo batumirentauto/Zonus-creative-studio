@@ -9,39 +9,27 @@ import Link from 'next/link'
 import { SearchIcon } from 'lucide-react'
 
 export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
-  const navItems = data?.navItems || []
-
   return (
-    <nav className="flex items-center gap-4 md:gap-6">
-      {navItems.length > 0 ? (
-        navItems.map(({ link }, i) => {
-          return <CMSLink key={i} {...link} appearance="link" className="text-sm font-medium hover:text-orange-500 transition-colors" />
-        })
-      ) : (
-        <div className="hidden md:flex items-center gap-5 text-sm font-medium text-foreground/80">
-          <Link href="/tree-service-websites" className="hover:text-orange-500 transition-colors">
-            Tree Care
-          </Link>
-          <Link href="/roofing-websites" className="hover:text-orange-500 transition-colors">
-            Roofing
-          </Link>
-          <Link href="/auto-business-websites" className="hover:text-orange-500 transition-colors">
-            Auto Business
-          </Link>
-          <Link href="/posts" className="hover:text-orange-500 transition-colors">
-            Case Studies
-          </Link>
-        </div>
-      )}
-      <Link href="/search" className="p-2 text-muted-foreground hover:text-foreground transition-colors">
-        <span className="sr-only">Search</span>
-        <SearchIcon className="w-4 h-4" />
-      </Link>
+    <nav className="flex items-center gap-6">
+      <div className="hidden md:flex items-center gap-6 text-[13px] font-normal text-neutral-400">
+        <Link href="#what-we-build" className="hover:text-white transition-colors duration-150">
+          What We Build
+        </Link>
+        <Link href="#scope" className="hover:text-white transition-colors duration-150">
+          Scope of Work
+        </Link>
+        <Link href="#specs" className="hover:text-white transition-colors duration-150">
+          Architecture & Speed
+        </Link>
+        <Link href="#contact" className="hover:text-white transition-colors duration-150">
+          Direct Contact
+        </Link>
+      </div>
       <Link
-        href="/contact"
-        className="inline-flex items-center justify-center px-4 py-2 text-xs md:text-sm font-semibold rounded-lg bg-orange-600 text-white shadow-sm hover:bg-orange-500 active:scale-95 transition-all duration-150"
+        href="#contact"
+        className="inline-flex items-center justify-center px-3.5 py-1.5 text-[12px] font-medium tracking-tight rounded-full bg-white text-black hover:bg-neutral-200 active:scale-[0.98] transition-all duration-150"
       >
-        Free Audit
+        Book a 15-Min Scoping Call
       </Link>
     </nav>
   )

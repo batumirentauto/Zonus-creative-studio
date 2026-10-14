@@ -1,36 +1,20 @@
 import type { Metadata } from 'next'
 import React from 'react'
-import { HeroSection } from '@/components/studio/HeroSection'
-import { NichesSection } from '@/components/studio/NichesSection'
-import { RoiCalculator } from '@/components/studio/RoiCalculator'
-import { ComparisonSection } from '@/components/studio/ComparisonSection'
-import { CaseStudiesSection } from '@/components/studio/CaseStudiesSection'
-import { TechStackSection } from '@/components/studio/TechStackSection'
-import { AuditFormSection } from '@/components/studio/AuditFormSection'
-import { FaqSection } from '@/components/studio/FaqSection'
+import { AppleZonusLanding } from '@/components/studio/AppleZonusLanding'
 
 export const metadata: Metadata = {
-  title: 'Zonus Creative Studio | High-Converting Websites for US Trade Contractors',
+  title: 'Zonus Creative Studio — Web Infrastructure for High-Ticket Contractors (zonus.co)',
   description:
-    'We engineer high-converting websites for American Tree Removal, Roofing Contractors, and Auto Businesses. Blazing 0.3s mobile speeds, 5-star Google review funnels, and click-to-call architecture on Payload CMS & Railway.',
+    'We design and deploy high-performance websites for roofing, tree care, and specialty trade businesses across the United States. Fast loading, clear architecture, zero agency fluff.',
   openGraph: {
-    title: 'Zonus Creative Studio | Websites for US Contractors',
+    title: 'Zonus Creative Studio — High-Ticket Trade Infrastructure',
     description:
-      'High-converting websites for Tree Removal, Roofing, and Auto Businesses across the USA. Built on Payload CMS 3.0, Next.js, and Railway.',
+      'Engineered websites for US roofing, tree care, and specialty contractors. Sub-second load speed, direct CRM routing, and 100% owned assets.',
+    url: 'https://zonus.co',
+    siteName: 'Zonus Creative Studio',
   },
 }
 
 export default function HomePage() {
-  return (
-    <main className="min-h-screen">
-      <HeroSection />
-      <NichesSection />
-      <RoiCalculator />
-      <ComparisonSection />
-      <CaseStudiesSection />
-      <TechStackSection />
-      <AuditFormSection />
-      <FaqSection />
-    </main>
-  )
+  return <AppleZonusLanding />
 }
