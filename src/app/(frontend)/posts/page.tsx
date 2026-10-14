@@ -12,20 +12,36 @@ export const dynamic = 'force-static'
 export const revalidate = 600
 
 export default async function Page() {
-  const payload = await getPayload({ config: configPromise })
+  let posts: { docs: any[]; page: number; totalDocs: number; totalPages: number } = {
+    docs: [],
+    page: 1,
+    totalDocs: 0,
+    totalPages: 1,
+  }
 
-  const posts = await payload.find({
-    collection: 'posts',
-    depth: 1,
-    limit: 12,
-    overrideAccess: false,
-    select: {
-      title: true,
-      slug: true,
-      categories: true,
-      meta: true,
-    },
-  })
+  try {
+    const payload = await getPayload({ config: configPromise })
+    const result = await payload.find({
+      collection: 'posts',
+      depth: 1,
+      limit: 12,
+      overrideAccess: false,
+      select: {
+        title: true,
+        slug: true,
+        categories: true,
+        meta: true,
+      },
+    })
+    posts = {
+      docs: result.docs,
+      page: result.page || 1,
+      totalDocs: result.totalDocs,
+      totalPages: result.totalPages || 1,
+    }
+  } catch {
+    // Return empty state if database is unreachable
+  }
 
   return (
     <div className="pt-24 pb-24">
