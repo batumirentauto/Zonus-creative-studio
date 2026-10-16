@@ -5,6 +5,7 @@ import React from 'react'
 import type { Header as HeaderType } from '@/payload-types'
 
 import Link from 'next/link'
+import { Phone } from 'lucide-react'
 import { useLanguage } from '@/providers/Language'
 import { LanguageSwitcher } from '@/components/studio/LanguageSwitcher'
 
@@ -29,6 +30,14 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
       </div>
 
       <div className="flex items-center gap-3">
+        <a
+          href="tel:+13022130266"
+          className="hidden sm:inline-flex items-center gap-1.5 text-[12px] font-mono text-neutral-300 hover:text-white transition-colors py-1 px-2 rounded-md hover:bg-white/[0.05]"
+        >
+          <Phone className="w-3 h-3 text-neutral-400" />
+          <span>+1 (302) 213-0266</span>
+        </a>
+
         <LanguageSwitcher />
 
         <Link

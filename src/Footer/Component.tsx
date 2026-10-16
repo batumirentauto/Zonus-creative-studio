@@ -15,6 +15,10 @@ export async function Footer() {
           <Logo />
           <span className="text-neutral-600">/</span>
           <span className="text-neutral-500">zonus.co</span>
+          <span className="text-neutral-600">/</span>
+          <a href="tel:+13022130266" className="text-neutral-400 hover:text-white transition-colors">
+            +1 (302) 213-0266
+          </a>
         </div>
         <FooterText />
       </div>

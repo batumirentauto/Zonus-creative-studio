@@ -65,6 +65,8 @@ export interface TranslationType {
     eyebrow: string
     title: string
     desc: string
+    directPhone: string
+    phoneVal: string
     directCorrespondence: string
     activeTimezones: string
     timezonesVal: string
@@ -224,6 +226,8 @@ export const translations: Record<'en' | 'ru', TranslationType> = {
       eyebrow: 'Zero Risk Project Request',
       title: 'Get your live working website in 48 hours. $0 down.',
       desc: 'Tell us what trade you operate, your primary service area, and where to send the preview. We build the site first; you review it live before paying anything.',
+      directPhone: 'Direct Phone / Text',
+      phoneVal: '+1 (302) 213-0266',
       directCorrespondence: 'Direct Correspondence',
       activeTimezones: 'Active Timezones',
       timezonesVal: 'EST · CST · PST (Continental United States)',
@@ -392,6 +396,8 @@ export const translations: Record<'en' | 'ru', TranslationType> = {
       eyebrow: 'Заказ сайта без риска',
       title: 'Получите готовый рабочий сайт через 48 часов. $0 предоплаты.',
       desc: 'Напишите, в какой сфере вы работаете, вашу основную территорию и куда прислать ссылку на предпросмотр. Мы сначала сделаем сайт, и только если он вам понравится — вы его оплатите.',
+      directPhone: 'Прямой телефон / SMS',
+      phoneVal: '+1 (302) 213-0266',
       directCorrespondence: 'Прямая почта',
       activeTimezones: 'Рабочие часовые пояса',
       timezonesVal: 'EST · CST · PST (Континентальные США)',

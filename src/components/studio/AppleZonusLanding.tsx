@@ -7,6 +7,7 @@ import {
   ArrowUpRight,
   Check,
   Layers,
+  Phone,
   Smartphone,
   Workflow,
 } from 'lucide-react'
@@ -368,6 +369,18 @@ export const AppleZonusLanding: React.FC = () => {
               </p>
 
               <div className="pt-6 border-t border-white/[0.08] space-y-4 text-xs font-mono text-neutral-400">
+                <div>
+                  <span className="text-neutral-600 uppercase block mb-1">
+                    {t.contact.directPhone}
+                  </span>
+                  <a
+                    href="tel:+13022130266"
+                    className="text-white hover:underline text-sm font-sans inline-flex items-center gap-1.5"
+                  >
+                    <Phone className="w-3.5 h-3.5 text-neutral-400" />
+                    +1 (302) 213-0266
+                  </a>
+                </div>
                 <div>
                   <span className="text-neutral-600 uppercase block mb-1">
                     {t.contact.directCorrespondence}
