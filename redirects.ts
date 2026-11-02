@@ -27,5 +27,11 @@ export const redirects: NextConfig['redirects'] = async () => {
     permanent: false,
   }))
 
-  return [internetExplorerRedirect, wildcardSeptic, ...septicRedirects]
+  const septicSubpathRedirects = (septicSlugs as string[]).map((slug) => ({
+    source: `/${slug}/:subpath*`,
+    destination: `https://septic.up.railway.app/${slug}/:subpath*`,
+    permanent: false,
+  }))
+
+  return [internetExplorerRedirect, wildcardSeptic, ...septicSubpathRedirects, ...septicRedirects]
 }
