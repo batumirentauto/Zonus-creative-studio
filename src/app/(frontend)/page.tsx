@@ -16,5 +16,5 @@ export const metadata: Metadata = {
 }
 
 export default function HomePage() {
-  return <AppleZonusLanding />
+  return <AppleZonusLanding forcedLanguage="en" />
 }

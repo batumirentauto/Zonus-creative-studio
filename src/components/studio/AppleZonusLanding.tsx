@@ -12,10 +12,16 @@ import {
   Workflow,
 } from 'lucide-react'
 import { useLanguage } from '@/providers/Language'
-import { LanguageSwitcher } from './LanguageSwitcher'
+import { translations } from './translations'
 
-export const AppleZonusLanding: React.FC = () => {
-  const { t, language } = useLanguage()
+interface AppleZonusLandingProps {
+  forcedLanguage?: 'en' | 'ru'
+}
+
+export const AppleZonusLanding: React.FC<AppleZonusLandingProps> = ({ forcedLanguage }) => {
+  const langContext = useLanguage()
+  const activeLanguage = forcedLanguage || langContext.language || 'en'
+  const t = translations[activeLanguage] || langContext.t
 
   // Form submission state
   const [formSubmitted, setFormSubmitted] = useState(false)
@@ -531,12 +537,6 @@ export const AppleZonusLanding: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* Floating convenient language switcher pill for testing and fast toggling */}
-      <div className="fixed bottom-6 right-6 z-40 hidden sm:flex items-center gap-2 p-1.5 pl-3 rounded-full border border-white/[0.15] bg-[#111115]/90 backdrop-blur-md shadow-2xl">
-        <span className="text-[11px] font-mono text-neutral-400">Lang:</span>
-        <LanguageSwitcher />
-      </div>
     </div>
   )
 }

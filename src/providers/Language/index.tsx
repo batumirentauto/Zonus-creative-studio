@@ -1,6 +1,7 @@
 'use client'
 
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useMemo } from 'react'
+import { usePathname } from 'next/navigation'
 import { translations, TranslationType } from '@/components/studio/translations'
 
 export type Language = 'en' | 'ru'
@@ -12,45 +13,28 @@ interface LanguageContextType {
 }
 
 const defaultContext: LanguageContextType = {
-  language: 'ru',
+  language: 'en',
   setLanguage: () => null,
-  t: translations.ru,
+  t: translations.en,
 }
 
 const LanguageContext = createContext<LanguageContextType>(defaultContext)
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguageState] = useState<Language>('ru')
-  const [mounted, setMounted] = useState(false)
+  const pathname = usePathname()
+  const isRu = pathname === '/ru' || pathname?.startsWith('/ru/')
+  const language: Language = isRu ? 'ru' : 'en'
 
-  useEffect(() => {
-    setMounted(true)
-    const saved = localStorage.getItem('zonus_language') as Language | null
-    if (saved && (saved === 'en' || saved === 'ru')) {
-      setLanguageState(saved)
-    }
-  }, [])
-
-  const setLanguage = (newLang: Language) => {
-    setLanguageState(newLang)
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('zonus_language', newLang)
-    }
-  }
-
-  const currentTranslation = translations[language] || translations.ru
-
-  return (
-    <LanguageContext.Provider
-      value={{
-        language,
-        setLanguage,
-        t: currentTranslation,
-      }}
-    >
-      {children}
-    </LanguageContext.Provider>
+  const value = useMemo(
+    () => ({
+      language,
+      setLanguage: () => null,
+      t: translations[language] || translations.en,
+    }),
+    [language],
   )
+
+  return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>
 }
 
 export const useLanguage = () => useContext(LanguageContext)

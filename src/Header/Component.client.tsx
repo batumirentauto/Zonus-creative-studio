@@ -32,7 +32,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/[0.08] bg-[#0A0A0C]/85 backdrop-blur-xl">
       <div className="container mx-auto px-6 h-14 flex items-center justify-between">
-        <Link href="/" className="no-underline flex items-center">
+        <Link href={pathname?.startsWith('/ru') ? '/ru' : '/'} className="no-underline flex items-center">
           <Logo />
         </Link>
         <HeaderNav data={data} />
