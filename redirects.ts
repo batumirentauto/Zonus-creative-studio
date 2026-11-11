@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next'
 import septicSlugs from './src/septic-slugs.json'
 import fencingSlugs from './src/fencing-slugs.json'
+import treeSlugs from './src/tree-slugs.json'
 
 export const redirects: NextConfig['redirects'] = async () => {
   const internetExplorerRedirect = {
@@ -66,6 +67,25 @@ export const redirects: NextConfig['redirects'] = async () => {
     permanent: false,
   }))
 
+  // Tree Removal Showcase
+  const wildcardTree = {
+    source: '/tree/:slug*',
+    destination: 'https://tree-portal.up.railway.app/:slug*',
+    permanent: false,
+  }
+
+  const treeRedirects = (treeSlugs as string[]).map((slug) => ({
+    source: `/${slug}`,
+    destination: `https://tree-portal.up.railway.app/${slug}`,
+    permanent: false,
+  }))
+
+  const treeSubpathRedirects = (treeSlugs as string[]).map((slug) => ({
+    source: `/${slug}/:subpath*`,
+    destination: `https://tree-portal.up.railway.app/${slug}/:subpath*`,
+    permanent: false,
+  }))
+
   return [
     internetExplorerRedirect,
     rootFencing,
@@ -76,5 +96,8 @@ export const redirects: NextConfig['redirects'] = async () => {
     wildcardSeptic,
     ...septicSubpathRedirects,
     ...septicRedirects,
+    wildcardTree,
+    ...treeSubpathRedirects,
+    ...treeRedirects,
   ]
 }
