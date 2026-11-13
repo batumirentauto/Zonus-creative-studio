@@ -55,6 +55,18 @@ export const redirects: NextConfig['redirects'] = async () => {
     permanent: false,
   }
 
+  const callRedirect = {
+    source: '/call',
+    destination: 'https://septic.up.railway.app/call',
+    permanent: false,
+  }
+
+  const callSubpathRedirect = {
+    source: '/call/:path*',
+    destination: 'https://septic.up.railway.app/call/:path*',
+    permanent: false,
+  }
+
   const septicRedirects = (septicSlugs as string[]).map((slug) => ({
     source: `/${slug}`,
     destination: `https://septic.up.railway.app/${slug}`,
@@ -94,6 +106,8 @@ export const redirects: NextConfig['redirects'] = async () => {
     ...fencingSubpathRedirects,
     ...fencingRedirects,
     wildcardSeptic,
+    callRedirect,
+    callSubpathRedirect,
     ...septicSubpathRedirects,
     ...septicRedirects,
     wildcardTree,
