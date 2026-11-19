@@ -98,6 +98,31 @@ export const redirects: NextConfig['redirects'] = async () => {
     permanent: false,
   }))
 
+  // Meah Rothman Tell, Esq. - Mediator Showcase
+  const meahTellRedirect = {
+    source: '/tell',
+    destination: 'https://mediators-production.up.railway.app/',
+    permanent: false,
+  }
+
+  const meahRedirect = {
+    source: '/meah',
+    destination: 'https://mediators-production.up.railway.app/',
+    permanent: false,
+  }
+
+  const mediatorRedirect = {
+    source: '/mediator',
+    destination: 'https://mediators-production.up.railway.app/',
+    permanent: false,
+  }
+
+  const mediatorsRedirect = {
+    source: '/mediators',
+    destination: 'https://mediators-production.up.railway.app/',
+    permanent: false,
+  }
+
   return [
     internetExplorerRedirect,
     rootFencing,
@@ -113,5 +138,9 @@ export const redirects: NextConfig['redirects'] = async () => {
     wildcardTree,
     ...treeSubpathRedirects,
     ...treeRedirects,
+    meahTellRedirect,
+    meahRedirect,
+    mediatorRedirect,
+    mediatorsRedirect,
   ]
 }
