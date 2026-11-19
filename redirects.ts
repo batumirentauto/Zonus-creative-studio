@@ -123,6 +123,25 @@ export const redirects: NextConfig['redirects'] = async () => {
     permanent: false,
   }
 
+  // Tatiana Tree Service Dialer & Playbook
+  const tatianaRedirect = {
+    source: '/tatiana',
+    destination: '/tatiana.html',
+    permanent: false,
+  }
+
+  const playbookRedirect = {
+    source: '/playbook',
+    destination: '/playbook.pdf',
+    permanent: false,
+  }
+
+  const scriptRedirect = {
+    source: '/script',
+    destination: '/tatiana-script.pdf',
+    permanent: false,
+  }
+
   return [
     internetExplorerRedirect,
     rootFencing,
@@ -142,5 +161,8 @@ export const redirects: NextConfig['redirects'] = async () => {
     meahRedirect,
     mediatorRedirect,
     mediatorsRedirect,
+    tatianaRedirect,
+    playbookRedirect,
+    scriptRedirect,
   ]
 }
