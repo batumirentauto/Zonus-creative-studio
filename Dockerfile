@@ -10,7 +10,7 @@ RUN npm install -g pnpm@latest
 
 # Copy package manifests and lockfiles
 COPY package.json pnpm-lock.yaml* pnpm-workspace.yaml* ./
-RUN pnpm i --frozen-lockfile
+RUN pnpm i --frozen-lockfile --no-engine-strict
 
 # Rebuild the source code
 FROM base AS builder
