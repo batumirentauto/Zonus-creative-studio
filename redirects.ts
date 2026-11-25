@@ -130,17 +130,7 @@ export const redirects: NextConfig['redirects'] = async () => {
     permanent: false,
   }
 
-  const anastasiaRedirect = {
-    source: '/anastasia',
-    destination: '/anastasia.html',
-    permanent: false,
-  }
 
-  const dialerRedirect = {
-    source: '/dialer',
-    destination: '/dialer.html',
-    permanent: false,
-  }
 
   const playbookRedirect = {
     source: '/playbook',
@@ -174,8 +164,7 @@ export const redirects: NextConfig['redirects'] = async () => {
     mediatorRedirect,
     mediatorsRedirect,
     tatianaRedirect,
-    anastasiaRedirect,
-    dialerRedirect,
+
     playbookRedirect,
     scriptRedirect,
   ]
