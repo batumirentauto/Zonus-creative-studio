@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zonus Studio — Live Mediator Outreach Analytics (US Only)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+</style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen p-4 md:p-8 antialiased">
+<div class="max-w-7xl mx-auto">
+
+  <!-- HEADER -->
+  <header class="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-8 shadow-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+    <div>
+      <div class="flex items-center gap-3 mb-1">
+        <span class="inline-block w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+        <h1 class="text-xl md:text-2xl font-extrabold tracking-tight text-white">LIVE АНАЛИТИКА ПЕРЕХОДОВ МЕДИАТОРОВ</h1>
+        <span class="text-xs bg-blue-950 text-blue-300 border border-blue-800 px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider">US Only Filter Active</span>
+      </div>
+      <p class="text-slate-400 text-xs md:text-sm">
+        🛡️ Заходы из <strong>Грузии, Европы и СНГ отфильтрованы и не учитываются</strong>. Фиксируются только реальные переходы из США.
+      </p>
+    </div>
+    <div class="flex items-center gap-3">
+      <button onclick="fetchVisits()" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-bold transition flex items-center gap-2 shadow-lg shadow-blue-600/30">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+        Обновить сейчас
+      </button>
+      <span id="refreshTimer" class="text-xs text-slate-500 font-mono">Авто: 15с</span>
+    </div>
+  </header>
+
+  <!-- METRICS CARDS -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+    <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4">
+      <div class="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">🇺🇸 Всего переходов из США</div>
+      <div id="metricTotalVisits" class="text-3xl font-black text-white font-mono">0</div>
+    </div>
+    <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4">
+      <div class="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">🎯 Открыли страницу (Уникальные)</div>
+      <div id="metricUniqueMediators" class="text-3xl font-black text-emerald-400 font-mono">0 / 15</div>
+    </div>
+    <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4">
+      <div class="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">📈 Конверсия в открытие</div>
+      <div id="metricConversionRate" class="text-3xl font-black text-blue-400 font-mono">0.0%</div>
+    </div>
+    <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4">
+      <div class="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">📱 Устройства посетителей</div>
+      <div id="metricDevices" class="text-xs text-slate-300 font-mono mt-2">Mobile: 0 · Desktop: 0</div>
+    </div>
+  </div>
+
+  <!-- MEDIATOR CARDS GRID (15 MEDIATORS) -->
+  <h2 class="text-base font-extrabold uppercase tracking-wider text-slate-300 mb-4 flex items-center gap-2">
+    <span>📋 Статус по каждому из 15 медиаторов</span>
+  </h2>
+  
+  <div id="mediatorsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+    <!-- Populated by JS -->
+  </div>
+
+  <!-- LIVE EVENT LOG TABLE -->
+  <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-xl mb-12">
+    <div class="px-6 py-4 border-b border-slate-800 flex justify-between items-center bg-slate-900/90">
+      <h3 class="text-sm font-bold text-white uppercase tracking-wider">🔴 Живая лента переходов (US Visits Stream)</h3>
+      <span id="eventCountBadge" class="text-xs bg-slate-800 text-slate-300 px-2 py-0.5 rounded font-mono">0 событий</span>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-xs">
+        <thead class="bg-slate-950/60 text-slate-400 uppercase text-[10px] tracking-wider border-b border-slate-800">
+          <tr>
+            <th class="py-3 px-4">Время (EST / Локальное)</th>
+            <th class="py-3 px-4">Медиатор / Ссылка</th>
+            <th class="py-3 px-4">Локация в США</th>
+            <th class="py-3 px-4">IP-адрес</th>
+            <th class="py-3 px-4">Устройство</th>
+          </tr>
+        </thead>
+        <tbody id="eventsTableBody" class="divide-y divide-slate-800/60 text-slate-300 font-mono">
+          <tr>
+            <td colspan="5" class="py-8 text-center text-slate-500">
+              Пока нет переходов из США. Как только медиатор кликнет по ссылке — событие появится здесь мгновенно!
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const MEDIATORS = [
+  { id: "MED-000", name: "Meah Rothman Tell, Esq.", slug: "tell", state: "FL", city: "Tamarac", email: "meahtell@gmail.com" },
+  { id: "MED-014", name: "David C. Weinberg, Esq.", slug: "weinberg", state: "CA", city: "Palo Alto", email: "wzmlaw@comcast.net" },
+  { id: "MED-019", name: "Bruce Canter, Esq.", slug: "canter", state: "CA", city: "Aliso Viejo", email: "bcanter.strategy@gmail.com" },
+  { id: "MED-028", name: "Eben L. Kurtzman, Esq.", slug: "kurtzman", state: "CA", city: "San Jose", email: "brocc@juno.com" },
+  { id: "MED-046", name: "Hon. J. Crockett Farnell (Ret.)", slug: "farnell", state: "FL", city: "Clearwater", email: "crockett.farnell@gmail.com" },
+  { id: "MED-047", name: "D. Lawrence Rayburn, Esq.", slug: "rayburn", state: "FL", city: "Tampa", email: "larryrayburn75@gmail.com" },
+  { id: "MED-054", name: "Hon. Jeff Kottkamp", slug: "kottkamp", state: "FL", city: "Fort Myers", email: "jeffkottkamp@gmail.com" },
+  { id: "MED-074", name: "Cheryl L. McMullan, Esq.", slug: "mcmullan", state: "TX", city: "San Antonio", email: "attyelder@aol.com" },
+  { id: "MED-075", name: "Donald K. Eckhardt, Esq.", slug: "eckhardt", state: "TX", city: "Houston", email: "donaldk@aol.com" },
+  { id: "MED-077", name: "James M. ('Jay') Patterson", slug: "patterson", state: "TX", city: "Dallas", email: "jayjanp@earthlink.net" },
+  { id: "MED-081", name: "Linda W. Gibson, Esq.", slug: "gibson", state: "TX", city: "Temple", email: "lindawgibson@gmail.com" },
+  { id: "MED-084", name: "Hon. Renee M. Rusch (Ret. ALJ)", slug: "rusch", state: "TX", city: "Austin", email: "reneerusch@gmail.com" },
+  { id: "MED-090", name: "Hon. Jack W. Raines", slug: "raines", state: "TX", city: "Fort Worth", email: "ftworthlaw@hotmail.com" },
+  { id: "MED-093", name: "Thomas A. Cipolla, Esq.", slug: "cipolla", state: "TX", city: "Austin", email: "tcipollapc@msn.com" },
+  { id: "MED-095", name: "Mitchell F. Boomer, Esq.", slug: "boomer", state: "TX", city: "Georgetown", email: "mitchell.boomer@pm.me" }
+];
+
+let visitsData = [];
+
+function renderCards() {
+  const container = document.getElementById('mediatorsGrid');
+  container.innerHTML = '';
+
+  const openedSlugs = new Set(visitsData.map(v => (v.slug || '').replace(/^.*\//, '')));
+
+  MEDIATORS.forEach(m => {
+    const mediatorVisits = visitsData.filter(v => (v.slug || '').toLowerCase().includes(m.slug.toLowerCase()));
+    const isOpened = mediatorVisits.length > 0;
+    const lastVisit = isOpened ? mediatorVisits[0] : null;
+
+    const card = document.createElement('div');
+    card.className = `p-4 rounded-xl border transition-all ${
+      isOpened 
+        ? 'bg-emerald-950/20 border-emerald-500/50 shadow-lg shadow-emerald-950/50' 
+        : 'bg-slate-900 border-slate-800'
+    }`;
+
+    card.innerHTML = `
+      <div class="flex justify-between items-start mb-2">
+        <span class="text-[10px] font-mono px-2 py-0.5 rounded ${isOpened ? 'bg-emerald-900 text-emerald-200' : 'bg-slate-800 text-slate-400'}">
+          ${m.id} · ${m.state}
+        </span>
+        <span class="text-xs font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1.5 ${
+          isOpened 
+            ? 'bg-emerald-500 text-slate-950' 
+            : 'bg-slate-800 text-slate-400'
+        }">
+          <span class="w-2 h-2 rounded-full ${isOpened ? 'bg-slate-950 animate-ping' : 'bg-slate-600'}"></span>
+          ${isOpened ? `ОТКРЫЛ (${mediatorVisits.length})` : 'ОЖИДАЕТ'}
+        </span>
+      </div>
+      <div class="font-bold text-sm text-white mb-1">${m.name}</div>
+      <div class="text-xs text-blue-400 font-mono mb-3">zonus.co/${m.slug}</div>
+      ${
+        isOpened && lastVisit
+          ? `<div class="bg-slate-950/70 p-2.5 rounded border border-emerald-900/50 text-[11px] text-emerald-300 font-mono">
+               <div>📍 ${lastVisit.city || 'US'}, ${lastVisit.region || lastVisit.country_code}</div>
+               <div class="text-[10px] text-slate-400 mt-0.5">🕒 ${new Date(lastVisit.received_at || lastVisit.timestamp).toLocaleTimeString()} · ${lastVisit.device || 'Desktop'}</div>
+             </div>`
+          : `<div class="text-[11px] text-slate-500">Письмо готово к отправке на ${m.email}</div>`
+      }
+    `;
+    container.appendChild(card);
+  });
+
+  // Update Metrics
+  const total = visitsData.length;
+  const uniqueCount = openedSlugs.size;
+  const rate = ((uniqueCount / 15) * 100).toFixed(1);
+
+  document.getElementById('metricTotalVisits').innerText = total;
+  document.getElementById('metricUniqueMediators').innerText = `${uniqueCount} / 15`;
+  document.getElementById('metricConversionRate').innerText = `${rate}%`;
+
+  const mobiles = visitsData.filter(v => (v.device || '').toLowerCase() === 'mobile').length;
+  const desktops = total - mobiles;
+  document.getElementById('metricDevices').innerText = `Mobile: ${mobiles} · Desktop: ${desktops}`;
+}
+
+function renderTable() {
+  const tbody = document.getElementById('eventsTableBody');
+  document.getElementById('eventCountBadge').innerText = `${visitsData.length} событий`;
+
+  if (visitsData.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="5" class="py-8 text-center text-slate-500">Пока нет переходов из США. Как только медиатор кликнет по ссылке — событие появится здесь мгновенно!</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = visitsData.map(v => {
+    const timeStr = new Date(v.received_at || v.timestamp).toLocaleString('ru-RU');
+    const slugStr = (v.slug || '').replace(/^.*\//, '') || 'tell';
+    return `
+      <tr class="hover:bg-slate-800/40 transition">
+        <td class="py-2.5 px-4 text-slate-400">${timeStr}</td>
+        <td class="py-2.5 px-4 font-bold text-blue-400">zonus.co/${slugStr}</td>
+        <td class="py-2.5 px-4 text-emerald-400">${v.city || 'US'}, ${v.region || 'US'}</td>
+        <td class="py-2.5 px-4 text-slate-400">${v.ip || '—'}</td>
+        <td class="py-2.5 px-4 text-slate-300">${v.device || 'Desktop'}</td>
+      </tr>
+    `;
+  }).join('');
+}
+
+async function fetchVisits() {
+  try {
+    const res = await fetch('/api/track');
+    if (res.ok) {
+      const data = await res.json();
+      visitsData = data.visits || [];
+      renderCards();
+      renderTable();
+    }
+  } catch (e) {
+    console.error('Fetch error:', e);
+  }
+}
+
+// Initial render & polling
+fetchVisits();
+renderCards();
+
+let countdown = 15;
+setInterval(() => {
+  countdown--;
+  document.getElementById('refreshTimer').innerText = `Авто: ${countdown}с`;
+  if (countdown <= 0) {
+    countdown = 15;
+    fetchVisits();
+  }
+}, 1000);
+</script>
+</body>
+</html>

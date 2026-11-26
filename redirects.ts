@@ -98,6 +98,25 @@ export const redirects: NextConfig['redirects'] = async () => {
     permanent: false,
   }))
 
+  // Mediator Showcases (15 US Mediators)
+  const mediatorRedirectsList = [
+    { source: "/tell", destination: "https://mediators-production.up.railway.app/", permanent: false },
+    { source: "/weinberg", destination: "https://mediators-production.up.railway.app/weinberg/", permanent: false },
+    { source: "/canter", destination: "https://mediators-production.up.railway.app/canter/", permanent: false },
+    { source: "/kurtzman", destination: "https://mediators-production.up.railway.app/kurtzman/", permanent: false },
+    { source: "/farnell", destination: "https://mediators-production.up.railway.app/farnell/", permanent: false },
+    { source: "/rayburn", destination: "https://mediators-production.up.railway.app/rayburn/", permanent: false },
+    { source: "/kottkamp", destination: "https://mediators-production.up.railway.app/kottkamp/", permanent: false },
+    { source: "/mcmullan", destination: "https://mediators-production.up.railway.app/mcmullan/", permanent: false },
+    { source: "/eckhardt", destination: "https://mediators-production.up.railway.app/eckhardt/", permanent: false },
+    { source: "/patterson", destination: "https://mediators-production.up.railway.app/patterson/", permanent: false },
+    { source: "/gibson", destination: "https://mediators-production.up.railway.app/gibson/", permanent: false },
+    { source: "/rusch", destination: "https://mediators-production.up.railway.app/rusch/", permanent: false },
+    { source: "/raines", destination: "https://mediators-production.up.railway.app/raines/", permanent: false },
+    { source: "/cipolla", destination: "https://mediators-production.up.railway.app/cipolla/", permanent: false },
+    { source: "/boomer", destination: "https://mediators-production.up.railway.app/boomer/", permanent: false },
+  ]
+
   // Meah Rothman Tell, Esq. - Mediator Showcase
   const meahTellRedirect = {
     source: '/tell',
@@ -159,6 +178,7 @@ export const redirects: NextConfig['redirects'] = async () => {
     wildcardTree,
     ...treeSubpathRedirects,
     ...treeRedirects,
+    ...mediatorRedirectsList,
     meahTellRedirect,
     meahRedirect,
     mediatorRedirect,
