@@ -115,6 +115,17 @@ export const redirects: NextConfig['redirects'] = async () => {
     { source: "/raines", destination: "https://mediators-production.up.railway.app/raines/", permanent: false },
     { source: "/cipolla", destination: "https://mediators-production.up.railway.app/cipolla/", permanent: false },
     { source: "/boomer", destination: "https://mediators-production.up.railway.app/boomer/", permanent: false },
+    { source: "/doyle", destination: "https://mediators-production.up.railway.app/doyle/", permanent: false },
+    { source: "/jagiella", destination: "https://mediators-production.up.railway.app/jagiella/", permanent: false },
+    { source: "/cothron", destination: "https://mediators-production.up.railway.app/cothron/", permanent: false },
+    { source: "/green", destination: "https://mediators-production.up.railway.app/green/", permanent: false },
+    { source: "/spicola", destination: "https://mediators-production.up.railway.app/spicola/", permanent: false },
+    { source: "/barton", destination: "https://mediators-production.up.railway.app/barton/", permanent: false },
+    { source: "/stein", destination: "https://mediators-production.up.railway.app/stein/", permanent: false },
+    { source: "/collins", destination: "https://mediators-production.up.railway.app/collins/", permanent: false },
+    { source: "/griffin", destination: "https://mediators-production.up.railway.app/griffin/", permanent: false },
+    { source: "/bray", destination: "https://mediators-production.up.railway.app/bray/", permanent: false },
+    { source: "/conklin", destination: "https://mediators-production.up.railway.app/conklin/", permanent: false },
   ]
 
   // Meah Rothman Tell, Esq. - Mediator Showcase
