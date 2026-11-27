@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>ZONUS ADR — Веб-интерфейс рассылки с расписанием отправки (16 Медиаторов)</title>
+<title>ZONUS ADR — Панель рассылки 15 Медиаторам США</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -12,13 +12,13 @@
   body { font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif; }
   .font-mono { font-family: "JetBrains Mono", monospace; }
   .tz-btn.active {
-    background: #73162b;
+    background: #0284c7;
     color: #ffffff;
-    border-color: #9f1239;
+    border-color: #38bdf8;
     font-weight: 700;
   }
   .card-item.sent {
-    opacity: 0.6;
+    opacity: 0.55;
     border-color: #059669;
   }
   .card-item.sent .status-badge {
@@ -27,21 +27,21 @@
   }
 </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-rose-500 selection:text-white pb-24">
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-sky-500 selection:text-white pb-24">
 
   <!-- TOP HEADER -->
   <header class="sticky top-0 z-40 bg-slate-900/95 backdrop-blur border-b border-slate-800 px-4 py-3 shadow-xl">
     <div class="max-w-6xl mx-auto flex items-center justify-between gap-3 flex-wrap sm:flex-nowrap">
       <div class="flex items-center gap-3">
-        <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-rose-500 to-amber-700 flex items-center justify-center font-black text-white text-lg shadow-lg shadow-rose-950/60 border border-rose-400/40">
+        <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-sky-500 to-indigo-700 flex items-center justify-center font-black text-white text-lg shadow-lg shadow-sky-950/60 border border-sky-400/40">
           Z
         </div>
         <div>
           <div class="flex items-center gap-2">
             <h1 class="font-extrabold text-base text-white tracking-tight">ZONUS ADR • OUTREACH CENTER</h1>
-            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">16 АКТИВНЫХ МЕДИАТОРОВ</span>
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">15 ВЕРИФИЦИРОВАННЫХ МЕДИАТОРОВ</span>
           </div>
-          <p class="text-xs text-slate-400">Точное время отправки по часовым поясам США с персональными ссылками на <span class="text-rose-400 font-mono font-semibold">zonus.co</span></p>
+          <p class="text-xs text-slate-400">Синхронизировано с Черновиками Gmail (<span class="text-sky-300 font-mono">heorhii@zonus.co</span>) и лендингами на <span class="text-sky-300 font-mono">zonus.co</span></p>
         </div>
       </div>
 
@@ -49,8 +49,11 @@
       <div class="flex items-center gap-3">
         <div class="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/80 text-xs flex items-center gap-2">
           <span class="text-slate-400">Отправлено:</span>
-          <span id="sentCounter" class="font-mono font-bold text-emerald-400">0 / 16</span>
+          <span id="sentCounter" class="font-mono font-bold text-emerald-400">0 / 15</span>
         </div>
+        <a href="https://zonus.co/analytics.html" target="_blank" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-emerald-950/60 text-emerald-300 border border-emerald-800/60 hover:bg-emerald-900 transition flex items-center gap-1">
+          📊 Аналитика переходов ↗
+        </a>
         <button onclick="resetAllSent()" class="text-xs text-slate-400 hover:text-slate-200 underline">Сбросить</button>
       </div>
     </div>
@@ -59,15 +62,15 @@
     <div class="max-w-6xl mx-auto mt-3 flex items-center justify-between gap-2 overflow-x-auto pb-1 flex-wrap md:flex-nowrap">
       <div class="flex items-center gap-1.5 text-xs">
         <span class="text-slate-400 text-[11px] uppercase tracking-wider font-semibold mr-1">Фильтр поясов:</span>
-        <button onclick="setFilter('ALL')" class="tz-btn active px-3 py-1 rounded-md border border-slate-700 text-slate-300 transition text-xs" id="btn-ALL">Все (16)</button>
-        <button onclick="setFilter('ET')" class="tz-btn px-3 py-1 rounded-md border border-slate-700 text-slate-300 transition text-xs" id="btn-ET">Восток (ET) • Флорида (5)</button>
-        <button onclick="setFilter('CT')" class="tz-btn px-3 py-1 rounded-md border border-slate-700 text-slate-300 transition text-xs" id="btn-CT">Центр (CT) • Техас (9)</button>
-        <button onclick="setFilter('PT')" class="tz-btn px-3 py-1 rounded-md border border-slate-700 text-slate-300 transition text-xs" id="btn-PT">Запад (PT) • Калифорния (2)</button>
+        <button onclick="setFilter('ALL')" class="tz-btn active px-3 py-1 rounded-md border border-slate-700 text-slate-300 transition text-xs" id="btn-ALL">Все (15)</button>
+        <button onclick="setFilter('ET')" class="tz-btn px-3 py-1 rounded-md border border-slate-700 text-slate-300 transition text-xs" id="btn-ET">Восток (ET) • Флорида (4)</button>
+        <button onclick="setFilter('CT')" class="tz-btn px-3 py-1 rounded-md border border-slate-700 text-slate-300 transition text-xs" id="btn-CT">Центр (CT) • Техас (8)</button>
+        <button onclick="setFilter('PT')" class="tz-btn px-3 py-1 rounded-md border border-slate-700 text-slate-300 transition text-xs" id="btn-PT">Запад (PT) • Калифорния (3)</button>
       </div>
 
       <!-- Live Clock Display -->
       <div class="flex items-center gap-2 text-xs font-mono bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800 shrink-0">
-        <span class="text-slate-400">Живое время в США:</span>
+        <span class="text-slate-400">Время в США:</span>
         <span id="usTimeDisplay" class="text-amber-400 font-bold">...</span>
       </div>
     </div>
@@ -76,21 +79,20 @@
   <!-- MAIN LIST CONTAINER -->
   <main class="max-w-6xl mx-auto w-full px-4 pt-6 flex-1">
     <!-- Sending Window Guide Banner -->
-    <div class="bg-gradient-to-r from-slate-900 via-rose-950/30 to-slate-900 border border-rose-900/40 rounded-2xl p-4 mb-6 text-xs text-slate-300 flex items-center justify-between gap-4 flex-wrap">
+    <div class="bg-gradient-to-r from-slate-900 via-sky-950/30 to-slate-900 border border-sky-900/40 rounded-2xl p-4 mb-6 text-xs text-slate-300 flex items-center justify-between gap-4 flex-wrap">
       <div>
         <div class="font-bold text-white text-sm mb-1 flex items-center gap-2">
-          <span>⏰ Золотые окна отправки для юристов и медиаторов в США:</span>
+          <span>⏰ Рекомендуемое окно отправки (9:00 AM – 11:30 AM по времени медиатора):</span>
         </div>
         <p class="text-slate-400 leading-relaxed">
-          • <strong class="text-emerald-400">Утренний пик (рекомендуется):</strong> <span class="font-mono text-slate-200">9:00 AM – 11:30 AM</span> по времени медиатора (юристы приходят в офис и разбирают почту).<br>
-          • <strong class="text-amber-400">Дневное окно:</strong> <span class="font-mono text-slate-200">1:30 PM – 4:30 PM</span> по времени медиатора (после обеденных перерывов и судебных заседаний).
+          Все 15 писем уже загружены в ваши <strong>«Черновики»</strong> в Gmail. Вы можете нажать <em>«Запланировать отправку»</em> по следующему графику:
         </p>
       </div>
       <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-[11px] font-mono shrink-0">
-        <div class="text-slate-400 mb-1">По вашему местному времени (Грузия / Батуми / Тбилиси • UTC+4):</div>
-        <div>🌴 Флорида (ET): <span class="text-emerald-400 font-semibold">18:00 – 20:30</span> (утро в США: 9:00–11:30)</div>
-        <div>🤠 Техас (CT): <span class="text-emerald-400 font-semibold">19:00 – 21:30</span> (утро в США: 9:00–11:30)</div>
-        <div>🌉 Калифорния (PT): <span class="text-emerald-400 font-semibold">21:00 – 23:30</span> (утро в США: 9:00–11:30)</div>
+        <div class="text-slate-400 mb-1">По вашему времени в Грузии (UTC+4):</div>
+        <div>🌴 Флорида (ET): <span class="text-emerald-400 font-semibold">18:00 – 20:30</span> (9:00–11:30 AM EST)</div>
+        <div>🤠 Техас (CT): <span class="text-emerald-400 font-semibold">19:00 – 21:30</span> (9:00–11:30 AM CST)</div>
+        <div>🌉 Калифорния (PT): <span class="text-emerald-400 font-semibold">21:00 – 23:30</span> (9:00–11:30 AM PST)</div>
       </div>
     </div>
 
@@ -98,10 +100,10 @@
   </main>
 
 <script>
-const leads = [{"id": "MED-019", "name": "Bruce M. Canter, Esq.", "salutation": "Dear Mr. Canter,", "email": "bcanter.strategy@gmail.com", "phone": "(949) 831-7788", "clean_phone": "+19498317788", "city": "Aliso Viejo / Orange County", "state": "CA", "tz": "PT", "slug": "canter", "subject": "Question regarding your California Bar dispute resolution practice", "trigger": "your 40-year California Bar record (UC Davis Law 1984), your corporate general counsel background, and your registration as a U.S. Patent Attorney", "ru_context": "40 лет в California Bar (UC Davis Law), экс-генеральный юрисконсульт корпораций, патентный поверенный США, медиатор Федерального суда Центрального округа Калифорнии."}, {"id": "MED-028", "name": "Eben K. Kurtzman, Esq.", "salutation": "Dear Mr. Kurtzman,", "email": "brocc@juno.com", "phone": "(408) 295-2105", "clean_phone": "+14082952105", "city": "San Jose / Silicon Valley", "state": "CA", "tz": "PT", "slug": "kurtzman", "subject": "Question regarding your Santa Clara County ADR panel profile", "trigger": "your 40-year California Bar record (UC Law SF / Hastings), your service as past Chair of the Santa Clara County Bar ADR Section, and your respected tenure as a Judge Pro Tem", "ru_context": "40 лет в California Bar (UC Law SF / Hastings 1986), экс-глава ADR-комитета Коллегии адвокатов Санта-Клары, судья Pro Tem и арбитр Высокого суда."}, {"id": "MED-047", "name": "Lawrence M. (\"Larry\") Rayburn, Esq., CPA", "salutation": "Dear Mr. Rayburn,", "email": "larryrayburn75@gmail.com", "phone": "(813) 223-9300", "clean_phone": "+18132239300", "city": "Tampa / Hillsborough County", "state": "FL", "tz": "ET", "slug": "rayburn", "subject": "Question regarding your Florida Bar ADR mediation profile", "trigger": "your dual credentials as both a 45-year Florida attorney and Certified Public Accountant (CPA), your UF Law J.D., and your background with Coopers & Lybrand (PwC)", "ru_context": "Адвокат с 45-летним стажем и сертифицированный аудитор (CPA), UF Law J.D. + M.S. Accounting, экс-налоговый консультант Coopers & Lybrand (PwC). Эксперт по коммерческим и финансовым спорам."}, {"id": "MED-054", "name": "Hon. Jeff Kottkamp", "salutation": "Dear Mr. Kottkamp,", "email": "jeffkottkamp@gmail.com", "phone": "(239) 939-2222", "clean_phone": "+12399392222", "city": "Fort Myers / Naples / Tallahassee", "state": "FL", "tz": "ET", "slug": "kottkamp", "subject": "Question regarding your Florida Supreme Court certified mediation practice", "trigger": "your distinguished service as Florida’s 17th Lieutenant Governor, your leadership as Judiciary Committee Chair in the Florida House, and your Florida Supreme Court & Federal ADR credentials", "ru_context": "17-й Вице-губернатор штата Флорида (2007–2011), экс-глава Комитета по судебной системе Палаты представителей Флориды, сертифицированный медиатор Верховного и Федерального судов."}, {"id": "MED-057", "name": "Hon. Melvia B. Green (Ret.)", "salutation": "Dear Judge Green,", "email": "melviabgreen@gmail.com", "phone": "(305) 586-4340", "clean_phone": "+13055864340", "city": "Tampa / Miami / Statewide", "state": "FL", "tz": "ET", "slug": "green", "subject": "Question regarding your Florida appellate & judicial ADR profile", "trigger": "your historic 22-year judicial career on the Florida bench, your 15 years authoring opinions on the Third District Court of Appeal, and your esteemed National Academy (NADN) neutral status", "ru_context": "22 года на скамье судьи во Флориде: 15 лет судья Апелляционного суда Третьего округа (3rd DCA), экс-судья Окружного суда, экс-прокурор США (AUSA), член элитной академии NADN, арбитр AAA, AHLA и FINRA."}, {"id": "MED-065", "name": "Jon Curtiss Kieffer, Esq.", "salutation": "Dear Mr. Kieffer,", "email": "jkieffer@kieffermadrid.com", "phone": "(727) 480-4560", "clean_phone": "+17274804560", "city": "St. Petersburg / Clearwater", "state": "FL", "tz": "ET", "slug": "kieffer", "subject": "Question regarding your Florida civil & healthcare mediation practice", "trigger": "your triple law degrees including your LL.M. in Health Law and LL.M. with honors in Trial Advocacy from Stetson, alongside your 25+ years defending healthcare systems and physicians", "ru_context": "Три диплома юриста: J.D., LL.M. по медицинскому праву (DePaul Law) и LL.M. по судебной защите (Stetson Law с отличием). 25+ лет судебной практики в медицине, соучредитель Kieffer Madrid Mediation."}, {"id": "MED-066", "name": "Leslie Reicin Stein, Esq.", "salutation": "Dear Ms. Stein,", "email": "leslie.stein2@verizon.net", "phone": "(813) 265-8225", "clean_phone": "+18132658225", "city": "Tampa / Hillsborough County", "state": "FL", "tz": "ET", "slug": "stein", "subject": "Question regarding your Florida Bar ADR mediation & arbitration practice", "trigger": "your 50-year milestone with The Florida Bar, your admission before the U.S. Supreme Court, your corporate counsel background in telecom/utilities, and your Stetson Law J.D.", "ru_context": "50 лет в коллегии адвокатов Флориды (Stetson Law J.D.), допущена к практике в Верховном Суде США, экс-корпоративный юрист телеком-гигантов (GTE/Verizon), арбитр 13-го округа."}, {"id": "MED-074", "name": "Cheryl L. McMullan, Esq.", "salutation": "Dear Ms. McMullan,", "email": "cheryl@mcmullanlaw.com", "phone": "(210) 829-1954", "clean_phone": "+12108291954", "city": "San Antonio / Bexar County", "state": "TX", "tz": "CT", "slug": "mcmullan", "subject": "Question regarding your Texas Association of Attorney-Mediators profile", "trigger": "your UT Law background (1983), your 35+ years mediating complex probate, trust, and elder law matters, and your honored recognition with the Peacemaker Award", "ru_context": "UT Law J.D. (1983), 35+ лет в медиации, экс-президент секции ADR Коллегии адвокатов Сан-Антонио, лауреат премии Peacemaker Award. Эксперт по наследству, трастам и опеке."}, {"id": "MED-081", "name": "Linda W. Gibson, Esq.", "salutation": "Dear Ms. Gibson,", "email": "lindawgibson@gmail.com", "phone": "(254) 773-1002", "clean_phone": "+12547731002", "city": "Temple / Central Texas", "state": "TX", "tz": "CT", "slug": "gibson", "subject": "Question regarding your TMCA Credentialed Advanced Mediator profile", "trigger": "your Baylor Law J.D., your TMCA Advanced Credentialed status since 1991, and your unique dual background bringing 16 years of educational and psychological insight to family and civil resolution", "ru_context": "Baylor Law (1989), статус TMCA Advanced Mediator с 1991 г. Уникальное сочетание: 16 лет опыта педагога и психолога-консультанта + работа с семьями врачей Baylor Scott & White и военных Fort Cavazos."}, {"id": "MED-084", "name": "Hon. Renee M. Rusch (Ret. ALJ)", "salutation": "Dear Judge Rusch,", "email": "reneerusch@gmail.com", "phone": "(512) 923-7130", "clean_phone": "+15129237130", "city": "Driftwood / Austin Metro", "state": "TX", "tz": "CT", "slug": "rusch", "subject": "Question regarding your Texas administrative & healthcare ADR practice", "trigger": "your 17 years presiding as a Texas Administrative Law Judge and ADR Team Leader at SOAH, your UC Berkeley School of Law (Boalt Hall) pedigree, and your AHLA & AAM neutral appointments", "ru_context": "17 лет судья административного права и руководитель команды ADR штата Техас в SOAH (1998–2015), выпускница UC Berkeley Law (Boalt Hall), нейтрал национальных панелей AHLA и AAM."}, {"id": "MED-086", "name": "Sarah C. Sarahan, Esq.", "salutation": "Dear Ms. Sarahan,", "email": "sarahcsarahan@gmail.com", "phone": "(512) 971-4146", "clean_phone": "+15129714146", "city": "Austin / Travis County", "state": "TX", "tz": "CT", "slug": "sarahan", "subject": "Question regarding your Texas workplace & employment ADR practice", "trigger": "your 32-year Texas legal record (UT Law 1993), your service as Texas Assistant Attorney General in Employment Litigation, your TCEQ counsel tenure, and your independent workplace investigator credentials", "ru_context": "Выпускница UT Law (1993), экс-помощник Генерального прокурора Техаса по трудовым спорам, экс-юрист экологического ведомства TCEQ, независимый HR-исследователь и медиатор AAM."}, {"id": "MED-090", "name": "Hon. Jack W. Raines (USALJ)", "salutation": "Dear Judge Raines,", "email": "jackraines@rainesadr.com", "phone": "(817) 731-8884", "clean_phone": "+18177318884", "city": "Fort Worth / Dallas Metro", "state": "TX", "tz": "CT", "slug": "raines", "subject": "Question regarding your federal judicial & AAM mediation profile", "trigger": "your distinguished career as a U.S. Administrative Law Judge, your track record conducting over 1,500 mediations since 1993, and your federal service as Special Counsel to the SEC and Assistant U.S. Attorney", "ru_context": "Федеральный административный судья США, 1500–2000+ проведенных медиаций с 1993 г., экс-спецсоветник SEC, экс-федеральный прокурор США (N.D. Tex.) и экс-глава отдела профответственности FDIC."}, {"id": "MED-093", "name": "Thomas A. Cipolla, Esq.", "salutation": "Dear Mr. Cipolla,", "email": "tom@cipolla-adr.com", "phone": "(512) 829-5100", "clean_phone": "+15128295100", "city": "Austin / Central Texas (TX · MO · IL)", "state": "TX", "tz": "CT", "slug": "cipolla", "subject": "Question regarding your multi-state federal and AAM mediation panels", "trigger": "your 50-year legal career (SMU Law 1975), your triple bar admissions in Texas, Missouri, and Illinois, and your appointments to federal ADR panels including the FMCS and National Mediation Board", "ru_context": "SMU Law (1975), 50 лет юридического стажа, лицензии трех штатов (TX, MO, IL). Арбитр федеральных трудовых панелей FMCS и NMB, нейтрал трех Федеральных окружных судов США."}, {"id": "MED-095", "name": "Mitchell F. (\"Mitch\") Boomer, Esq.", "salutation": "Dear Mr. Boomer,", "email": "mitchboomer@gmail.com", "phone": "(512) 869-7900", "clean_phone": "+15128697900", "city": "Georgetown / Austin Metro & CA", "state": "TX", "tz": "CT", "slug": "boomer", "subject": "Question regarding your Texas & California employment mediation practice", "trigger": "your 34 years with Jackson Lewis P.C. as Austin Managing Shareholder and San Francisco Litigation Manager, your U.S. Army JAG service, and your dual Texas & California Bar credentials", "ru_context": "Экс-капитан военной юстиции США (U.S. Army JAG), 34 года в Jackson Lewis P.C. (руководитель судебной практики в Сан-Франциско и управляющий партнер в Остине). Лицензии CA и TX."}, {"id": "MED-096", "name": "James M. (\"Jim\") Lober, Esq.", "salutation": "Dear Mr. Lober,", "email": "jlober@loberlaw.com", "phone": "(713) 621-6500", "clean_phone": "+17136216500", "city": "Houston (Greenway Plaza)", "state": "TX", "tz": "CT", "slug": "lober", "subject": "Question regarding your Southern District of Texas ADR panel profile", "trigger": "your 47 years in Texas practice (SMU Law 1977), your Harvard Negotiation Workshop training, and your veteran appointments as an approved neutral for the U.S. District Court for the Southern District of Texas", "ru_context": "В праве с 1977 г. (SMU Law), выпускник Harvard Negotiation Workshop (1994), 30+ лет в медиации, официальный нейтрал Федерального суда Южного округа Техаса (S.D. Tex.)."}, {"id": "MED-097", "name": "Gary W. Javore, Esq.", "salutation": "Dear Mr. Javore,", "email": "gjavore@javedr.com", "phone": "(210) 733-6235", "clean_phone": "+12107336235", "city": "San Antonio / Bexar County", "state": "TX", "tz": "CT", "slug": "javore", "subject": "Question regarding your Texas ADR & AAA arbitration practice", "trigger": "your recognition as six-time Lawyer of the Year in San Antonio for Mediation and Arbitration (Best Lawyers), your service as past President of the national AAM, and your AAA Commercial & Construction panel leadership", "ru_context": "Шестикратный «Юрист года в сфере медиации и арбитража» в Сан-Антонио (Best Lawyers), 1000+ процедур, экс-президент национальной ассоциации AAM, арбитр строительной панели AAA."}, {"id": "MED-064", "name": "Hon. James M. Barton II", "salutation": "Dear Judge Barton,", "email": "jbarton71@verizon.net", "phone": "(813) 309-3619", "clean_phone": "+18133093619", "city": "Tampa / Hillsborough County", "state": "FL", "tz": "ET", "slug": "barton", "subject": "Question regarding your Florida Bar ADR & Circuit Court profile", "trigger": "your twenty years of distinguished service on the 13th Judicial Circuit Court bench and your recognized mastery across medical malpractice, professional liability, and complex casualty litigation", "ru_context": "20 лет судья Окружного суда 13-го округа Флориды (Тампа), сертифицированный медиатор. Эксперт по врачебной ответственности, сложным деликтам и коммерческим спорам."}, {"id": "MED-060", "name": "Hon. Guy W. Spicola", "salutation": "Dear Judge Spicola,", "email": "gspicola@tampabay.rr.com", "phone": "(813) 350-7959", "clean_phone": "+18133507959", "city": "Tampa / Hillsborough County", "state": "FL", "tz": "ET", "slug": "spicola", "subject": "Question regarding your Florida Bar ADR profile", "trigger": "your distinguished tenure as Chief Judge of the 13th Judicial Circuit Court, your former service as a Florida State Senator, and your recognized authority across complex commercial disputes", "ru_context": "Экс-председатель (Chief Judge) 13-го судебного округа Флориды и бывший сенатор штата Флорида. Крупные коммерческие, банковские и наследственные споры."}, {"id": "MED-087", "name": "Tom Collins, Esq.", "salutation": "Dear Mr. Collins,", "email": "tomcollinsadr@gmail.com", "phone": "(512) 971-3172", "clean_phone": "+15129714172", "city": "Horseshoe Bay / Central Texas", "state": "TX", "tz": "CT", "slug": "collins", "subject": "Question regarding your State Bar of Texas ADR profile", "trigger": "your credentialed Association of Attorney-Mediators (AAM) standing and your track record of successfully conducting over 3,500 mediations across commercial, construction, and casualty claims", "ru_context": "UT Law (1979, Texas Law Review), более 3,500 проведенных медиаций. Строительные, коммерческие и страховые споры по всему Техасу."}, {"id": "MED-089", "name": "Hon. Frank Griffin", "salutation": "Dear Judge Griffin,", "email": "frankegriffin@hotmail.com", "phone": "(325) 200-7254", "clean_phone": "+13252007254", "city": "Brownwood / Central Texas", "state": "TX", "tz": "CT", "slug": "griffin", "subject": "Question regarding your State Bar of Texas ADR profile", "trigger": "your seasoned judicial service as County Court at Law Judge and 35th Judicial District Court neutral, alongside your recognized mastery in complex family law, CPS child welfare, and land disputes", "ru_context": "Экс-судья County Court at Law и нейтрал 35-го судебного округа Техаса, Baylor Law. Земельные, имущественные и сложные семейные споры."}];
+const leads = [{"id": "MED-000", "num": 1, "name": "Meah Rothman Tell, Esq.", "location": "FL (Tamarac / Fort Lauderdale) | Тел: (954) 733-5000", "state": "FL", "tz": "ET", "email": "meahtell@gmail.com", "subject": "Question regarding your Florida Bar ADR mediation profile", "link": "https://zonus.co/tell", "slug": "tell", "context": "Выпускница Columbia Law & MBA, магистр налогообложения (Tax LL.M.), экс-председатель секции ADR Коллегии адвокатов Флориды. Билингв (EN/ES).", "body": "Dear Ms. Tell,\n\nMy name is Heorhii with Zonus Studio. While reviewing dispute resolution neutrals in the FL legal community, your dual Columbia background (J.D. and MBA), your Tax LL.M., and your distinguished leadership as past Chair of the Florida Bar ADR Section stood out as truly exceptional.\n\nGiven your distinguished career and the stature of your dispute resolution practice, we felt your work deserved a modern digital presentation of equal caliber. Rather than sending a generic presentation, our team took the initiative to build an unlisted, private web prototype tailored specifically to your background and mediation philosophy:\nhttps://zonus.co/tell\n\nPlease note that this is an unlisted, private page created exclusively for your personal review. It is not accessible to the public, nor is it indexed by search engines.\n\nAs part of this prototype, we also prepared conceptual editorial visuals based on your public profile. We can easily replace them with your own preferred high-resolution photographs, or finalize and keep these upon launch.\n\nReviewing this carries zero cost and zero obligation. If you see value in having this live under your own domain, simply reply to this email and I will gladly share the details. If not, a brief note letting me know is just as appreciated, and we will quietly archive the preview.\n\nBest regards,\n\nHeorhii\nZonus Studio\nheorhii@zonus.co"}, {"id": "MED-014", "num": 2, "name": "David C. Weinberg, Esq.", "location": "CA (Palo Alto / Silicon Valley) | Тел: (650) 329-0851", "state": "CA", "tz": "PT", "email": "wzmlaw@comcast.net", "subject": "Question regarding your California ADR panel profile", "link": "https://zonus.co/weinberg", "slug": "weinberg", "context": "Преподаватель права Golden Gate University, официальный медиатор Высоких судов Санта-Клара и Сан-Матео, степень M.P.A. Эксперт по сложной недвижимости и партнерским спорам в Кремниевой долине.", "body": "Dear Mr. Weinberg,\n\nMy name is Heorhii with Zonus Studio. While reviewing dispute resolution neutrals in the CA legal community, your extensive work on the Santa Clara and San Mateo Superior Court ADR panels, your Master of Public Administration, and your faculty background at Golden Gate University School of Law stood out as truly exceptional.\n\nGiven your distinguished career and the stature of your dispute resolution practice, we felt your work deserved a modern digital presentation of equal caliber. Rather than sending a generic presentation, our team took the initiative to build an unlisted, private web prototype tailored specifically to your background and mediation philosophy:\nhttps://zonus.co/weinberg\n\nPlease note that this is an unlisted, private page created exclusively for your personal review. It is not accessible to the public, nor is it indexed by search engines.\n\nAs part of this prototype, we also prepared conceptual editorial visuals based on your public profile. We can easily replace them with your own preferred high-resolution photographs, or finalize and keep these upon launch.\n\nReviewing this carries zero cost and zero obligation. If you see value in having this live under your own domain, simply reply to this email and I will gladly share the details. If not, a brief note letting me know is just as appreciated, and we will quietly archive the preview.\n\nBest regards,\n\nHeorhii\nZonus Studio\nheorhii@zonus.co"}, {"id": "MED-019", "num": 3, "name": "Bruce Canter, Esq.", "location": "CA (Aliso Viejo / Orange County) | Тел: (949) 831-7788", "state": "CA", "tz": "PT", "email": "bcanter.strategy@gmail.com", "subject": "Question regarding your California Bar dispute resolution practice", "link": "https://zonus.co/canter", "slug": "canter", "context": "35+ лет в California Bar, выпускник Southwestern Law, опыт корпоративного юрисконсульта крупных компаний. Специализация: сложные бизнес-контракты, споры учредителей и страхование.", "body": "Dear Mr. Canter,\n\nMy name is Heorhii with Zonus Studio. While reviewing dispute resolution neutrals in the CA legal community, your 35-year legal tenure in California, your corporate general counsel acumen, and your proven track record resolving high-stakes business and insurance disputes stood out as truly exceptional.\n\nGiven your distinguished career and the stature of your dispute resolution practice, we felt your work deserved a modern digital presentation of equal caliber. Rather than sending a generic presentation, our team took the initiative to build an unlisted, private web prototype tailored specifically to your background and mediation philosophy:\nhttps://zonus.co/canter\n\nPlease note that this is an unlisted, private page created exclusively for your personal review. It is not accessible to the public, nor is it indexed by search engines.\n\nAs part of this prototype, we also prepared conceptual editorial visuals based on your public profile. We can easily replace them with your own preferred high-resolution photographs, or finalize and keep these upon launch.\n\nReviewing this carries zero cost and zero obligation. If you see value in having this live under your own domain, simply reply to this email and I will gladly share the details. If not, a brief note letting me know is just as appreciated, and we will quietly archive the preview.\n\nBest regards,\n\nHeorhii\nZonus Studio\nheorhii@zonus.co"}, {"id": "MED-028", "num": 4, "name": "Eben L. Kurtzman, Esq.", "location": "CA (San Jose / Silicon Valley) | Тел: (408) 295-2105", "state": "CA", "tz": "PT", "email": "brocc@juno.com", "subject": "Question regarding your Santa Clara County ADR panel profile", "link": "https://zonus.co/kurtzman", "slug": "kurtzman", "context": "Santa Clara University Law J.D. (1989), экс-глава ADR-комитета Коллегии адвокатов Санта-Клары, судья Pro Tem. Специализация: медицинские ошибки, недвижимость, споры партнеров.", "body": "Dear Mr. Kurtzman,\n\nMy name is Heorhii with Zonus Studio. While reviewing dispute resolution neutrals in the CA legal community, your 35-year California Bar record, your service as past Chair of the Santa Clara County Bar ADR Section, and your respected tenure as a Judge Pro Tem stood out as truly exceptional.\n\nGiven your distinguished career and the stature of your dispute resolution practice, we felt your work deserved a modern digital presentation of equal caliber. Rather than sending a generic presentation, our team took the initiative to build an unlisted, private web prototype tailored specifically to your background and mediation philosophy:\nhttps://zonus.co/kurtzman\n\nPlease note that this is an unlisted, private page created exclusively for your personal review. It is not accessible to the public, nor is it indexed by search engines.\n\nAs part of this prototype, we also prepared conceptual editorial visuals based on your public profile. We can easily replace them with your own preferred high-resolution photographs, or finalize and keep these upon launch.\n\nReviewing this carries zero cost and zero obligation. If you see value in having this live under your own domain, simply reply to this email and I will gladly share the details. If not, a brief note letting me know is just as appreciated, and we will quietly archive the preview.\n\nBest regards,\n\nHeorhii\nZonus Studio\nheorhii@zonus.co"}, {"id": "MED-046", "num": 5, "name": "Hon. J. Crockett Farnell (Ret.)", "location": "FL (Clearwater / St. Petersburg) | Тел: (727) 797-6950", "state": "FL", "tz": "ET", "email": "crockett.farnell@gmail.com", "subject": "Question regarding your Florida Bar ADR mediation profile", "link": "https://zonus.co/farnell", "slug": "farnell", "context": "24 года судья Окружного суда 6-го округа Флориды, 53 года во Florida Bar. Ветеран морской пехоты США с боевыми наградами (два «Пурпурных сердца», «Серебряная звезда»). Глубочайший судебный авторитет.", "body": "Dear Judge Farnell,\n\nMy name is Heorhii with Zonus Studio. While reviewing dispute resolution neutrals in the FL legal community, your 24 years of distinguished service on the Sixth Judicial Circuit bench, your 53 years with The Florida Bar, and your decorated combat service in the U.S. Marine Corps stood out as truly exceptional.\n\nGiven your distinguished career and the stature of your dispute resolution practice, we felt your work deserved a modern digital presentation of equal caliber. Rather than sending a generic presentation, our team took the initiative to build an unlisted, private web prototype tailored specifically to your background and mediation philosophy:\nhttps://zonus.co/farnell\n\nPlease note that this is an unlisted, private page created exclusively for your personal review. It is not accessible to the public, nor is it indexed by search engines.\n\nAs part of this prototype, we also prepared conceptual editorial visuals based on your public profile. We can easily replace them with your own preferred high-resolution photographs, or finalize and keep these upon launch.\n\nReviewing this carries zero cost and zero obligation. If you see value in having this live under your own domain, simply reply to this email and I will gladly share the details. If not, a brief note letting me know is just as appreciated, and we will quietly archive the preview.\n\nBest regards,\n\nHeorhii\nZonus Studio\nheorhii@zonus.co"}, {"id": "MED-047", "num": 6, "name": "D. Lawrence Rayburn, Esq.", "location": "FL (Tampa / Hillsborough County) | Тел: (813) 223-9300", "state": "FL", "tz": "ET", "email": "larryrayburn75@gmail.com", "subject": "Question regarding your Florida Bar ADR mediation profile", "link": "https://zonus.co/rayburn", "slug": "rayburn", "context": "FSU Law (1975), 49 лет в коллегии адвокатов Флориды, более 1,000 проведенных медиаций. Специалист высшего класса по строительным конфликтам, коммерческим договорам и страхованию.", "body": "Dear Mr. Rayburn,\n\nMy name is Heorhii with Zonus Studio. While reviewing dispute resolution neutrals in the FL legal community, your 49-year Florida Bar record, your Florida State University Law background, and your veteran experience facilitating over 1,000 commercial and construction dispute resolutions stood out as truly exceptional.\n\nGiven your distinguished career and the stature of your dispute resolution practice, we felt your work deserved a modern digital presentation of equal caliber. Rather than sending a generic presentation, our team took the initiative to build an unlisted, private web prototype tailored specifically to your background and mediation philosophy:\nhttps://zonus.co/rayburn\n\nPlease note that this is an unlisted, private page created exclusively for your personal review. It is not accessible to the public, nor is it indexed by search engines.\n\nAs part of this prototype, we also prepared conceptual editorial visuals based on your public profile. We can easily replace them with your own preferred high-resolution photographs, or finalize and keep these upon launch.\n\nReviewing this carries zero cost and zero obligation. If you see value in having this live under your own domain, simply reply to this email and I will gladly share the details. If not, a brief note letting me know is just as appreciated, and we will quietly archive the preview.\n\nBest regards,\n\nHeorhii\nZonus Studio\nheorhii@zonus.co"}, {"id": "MED-054", "num": 7, "name": "Hon. Jeff Kottkamp", "location": "FL (Fort Myers / Tallahassee) | Тел: (239) 939-2222", "state": "FL", "tz": "ET", "email": "jeffkottkamp@gmail.com", "subject": "Question regarding your Florida Bar ADR mediation profile", "link": "https://zonus.co/kottkamp", "slug": "kottkamp", "context": "17-й вице-губернатор Флориды (2007–2011), экс-депутат Палаты представителей Флориды, Stetson Law. Колоссальное доверие со стороны судей, политиков и корпоративных юристов всего штата.", "body": "Dear Mr. Kottkamp,\n\nMy name is Heorhii with Zonus Studio. While reviewing dispute resolution neutrals in the FL legal community, your dedicated public service as Florida’s 17th Lieutenant Governor, your tenure in the Florida House of Representatives, and your three-decade civil litigation and mediation career stood out as truly exceptional.\n\nGiven your distinguished career and the stature of your dispute resolution practice, we felt your work deserved a modern digital presentation of equal caliber. Rather than sending a generic presentation, our team took the initiative to build an unlisted, private web prototype tailored specifically to your background and mediation philosophy:\nhttps://zonus.co/kottkamp\n\nPlease note that this is an unlisted, private page created exclusively for your personal review. It is not accessible to the public, nor is it indexed by search engines.\n\nAs part of this prototype, we also prepared conceptual editorial visuals based on your public profile. We can easily replace them with your own preferred high-resolution photographs, or finalize and keep these upon launch.\n\nReviewing this carries zero cost and zero obligation. If you see value in having this live under your own domain, simply reply to this email and I will gladly share the details. If not, a brief note letting me know is just as appreciated, and we will quietly archive the preview.\n\nBest regards,\n\nHeorhii\nZonus Studio\nheorhii@zonus.co"}, {"id": "MED-074", "num": 8, "name": "Cheryl L. McMullan, Esq.", "location": "TX (San Antonio) | Тел: (210) 824-7355", "state": "TX", "tz": "CT", "email": "attyelder@aol.com", "subject": "Question regarding your State Bar of Texas ADR profile", "link": "https://zonus.co/mcmullan", "slug": "mcmullan", "context": "St. Mary's University Law, член Ассоциации адвокатов-медиаторов (AAM). Первопроходец и признанный авторитет в деликатных делах: опека пожилых людей, раздел наследства, трасты.", "body": "Dear Ms. McMullan,\n\nMy name is Heorhii with Zonus Studio. While reviewing dispute resolution neutrals in the TX legal community, your St. Mary's Law background, your Association of Attorney-Mediators credentials, and your dedicated statewide pioneering practice in elder care, probate, and trust mediation stood out as truly exceptional.\n\nGiven your distinguished career and the stature of your dispute resolution practice, we felt your work deserved a modern digital presentation of equal caliber. Rather than sending a generic presentation, our team took the initiative to build an unlisted, private web prototype tailored specifically to your background and mediation philosophy:\nhttps://zonus.co/mcmullan\n\nPlease note that this is an unlisted, private page created exclusively for your personal review. It is not accessible to the public, nor is it indexed by search engines.\n\nAs part of this prototype, we also prepared conceptual editorial visuals based on your public profile. We can easily replace them with your own preferred high-resolution photographs, or finalize and keep these upon launch.\n\nReviewing this carries zero cost and zero obligation. If you see value in having this live under your own domain, simply reply to this email and I will gladly share the details. If not, a brief note letting me know is just as appreciated, and we will quietly archive the preview.\n\nBest regards,\n\nHeorhii\nZonus Studio\nheorhii@zonus.co"}, {"id": "MED-075", "num": 9, "name": "Donald K. Eckhardt, Esq.", "location": "TX (Houston) | Тел: (713) 464-4444", "state": "TX", "tz": "CT", "email": "donaldk@aol.com", "subject": "Question regarding your State Bar of Texas ADR profile", "link": "https://zonus.co/eckhardt", "slug": "eckhardt", "context": "South Texas College of Law, 40+ лет практики в Техасе, член AAM. Ведущий нейтрал Хьюстона по сложным строительным контрактам, дефектам сооружений, энергии и недвижимости.", "body": "Dear Mr. Eckhardt,\n\nMy name is Heorhii with Zonus Studio. While reviewing dispute resolution neutrals in the TX legal community, your 40-year Texas Bar tenure, your South Texas College of Law background, and your recognized neutral expertise across complex construction, commercial, and property disputes stood out as truly exceptional.\n\nGiven your distinguished career and the stature of your dispute resolution practice, we felt your work deserved a modern digital presentation of equal caliber. Rather than sending a generic presentation, our team took the initiative to build an unlisted, private web prototype tailored specifically to your background and mediation philosophy:\nhttps://zonus.co/eckhardt\n\nPlease note that this is an unlisted, private page created exclusively for your personal review. It is not accessible to the public, nor is it indexed by search engines.\n\nAs part of this prototype, we also prepared conceptual editorial visuals based on your public profile. We can easily replace them with your own preferred high-resolution photographs, or finalize and keep these upon launch.\n\nReviewing this carries zero cost and zero obligation. If you see value in having this live under your own domain, simply reply to this email and I will gladly share the details. If not, a brief note letting me know is just as appreciated, and we will quietly archive the preview.\n\nBest regards,\n\nHeorhii\nZonus Studio\nheorhii@zonus.co"}, {"id": "MED-077", "num": 10, "name": "James M. (\"Jay\") Patterson, Esq.", "location": "TX (Dallas / North Texas) | Тел: (214) 750-0320", "state": "TX", "tz": "CT", "email": "jayjanp@earthlink.net", "subject": "Question regarding your State Bar of Texas ADR profile", "link": "https://zonus.co/patterson", "slug": "patterson", "context": "SMU Dedman Law, экс-президент секции ADR Коллегии адвокатов Далласа, совет директоров AAM. Более 40 лет стажа в сложнейших коммерческих и наследственных спорах Техаса.", "body": "Dear Mr. Patterson,\n\nMy name is Heorhii with Zonus Studio. While reviewing dispute resolution neutrals in the TX legal community, your SMU Law credentials, your leadership as past President of the Dallas Bar ADR Section, and your 40 years of trusted resolution in high-stakes commercial and probate matters stood out as truly exceptional.\n\nGiven your distinguished career and the stature of your dispute resolution practice, we felt your work deserved a modern digital presentation of equal caliber. Rather than sending a generic presentation, our team took the initiative to build an unlisted, private web prototype tailored specifically to your background and mediation philosophy:\nhttps://zonus.co/patterson\n\nPlease note that this is an unlisted, private page created exclusively for your personal review. It is not accessible to the public, nor is it indexed by search engines.\n\nAs part of this prototype, we also prepared conceptual editorial visuals based on your public profile. We can easily replace them with your own preferred high-resolution photographs, or finalize and keep these upon launch.\n\nReviewing this carries zero cost and zero obligation. If you see value in having this live under your own domain, simply reply to this email and I will gladly share the details. If not, a brief note letting me know is just as appreciated, and we will quietly archive the preview.\n\nBest regards,\n\nHeorhii\nZonus Studio\nheorhii@zonus.co"}, {"id": "MED-081", "num": 11, "name": "Linda W. Gibson, Esq.", "location": "TX (Temple / Central Texas) | Тел: (254) 771-5655", "state": "TX", "tz": "CT", "email": "lindawgibson@gmail.com", "subject": "Question regarding your State Bar of Texas ADR profile", "link": "https://zonus.co/gibson", "slug": "gibson", "context": "Baylor Law (1985), 38+ лет практики в Центральном Техасе. Исключительный баланс жесткого юридического анализа и психологической чуткости при разделе крупных семейных активов и бизнеса.", "body": "Dear Ms. Gibson,\n\nMy name is Heorhii with Zonus Studio. While reviewing dispute resolution neutrals in the TX legal community, your Baylor Law degree, your four-decade Central Texas legal tenure, and your renowned empathetic balance in mediating high-asset family estates and civil disputes stood out as truly exceptional.\n\nGiven your distinguished career and the stature of your dispute resolution practice, we felt your work deserved a modern digital presentation of equal caliber. Rather than sending a generic presentation, our team took the initiative to build an unlisted, private web prototype tailored specifically to your background and mediation philosophy:\nhttps://zonus.co/gibson\n\nPlease note that this is an unlisted, private page created exclusively for your personal review. It is not accessible to the public, nor is it indexed by search engines.\n\nAs part of this prototype, we also prepared conceptual editorial visuals based on your public profile. We can easily replace them with your own preferred high-resolution photographs, or finalize and keep these upon launch.\n\nReviewing this carries zero cost and zero obligation. If you see value in having this live under your own domain, simply reply to this email and I will gladly share the details. If not, a brief note letting me know is just as appreciated, and we will quietly archive the preview.\n\nBest regards,\n\nHeorhii\nZonus Studio\nheorhii@zonus.co"}, {"id": "MED-084", "num": 12, "name": "Hon. Renee M. Rusch (Ret. ALJ)", "location": "TX (Austin / Driftwood) | Тел: (512) 858-7090", "state": "TX", "tz": "CT", "email": "reneerusch@gmail.com", "subject": "Question regarding your State Bar of Texas ADR profile", "link": "https://zonus.co/rusch", "slug": "rusch", "context": "Экс-судья Государственного управления административных слушаний Техаса (SOAH), UT Austin Law J.D. Глубочайший эксперт по спорам с государственными регуляторами, лицензированию и трудовым конфликтам.", "body": "Dear Judge Rusch,\n\nMy name is Heorhii with Zonus Studio. While reviewing dispute resolution neutrals in the TX legal community, your distinguished judicial tenure as a Texas Administrative Law Judge (SOAH), your UT Austin Law J.D., and your deep acumen in resolving complex regulatory and administrative conflicts stood out as truly exceptional.\n\nGiven your distinguished career and the stature of your dispute resolution practice, we felt your work deserved a modern digital presentation of equal caliber. Rather than sending a generic presentation, our team took the initiative to build an unlisted, private web prototype tailored specifically to your background and mediation philosophy:\nhttps://zonus.co/rusch\n\nPlease note that this is an unlisted, private page created exclusively for your personal review. It is not accessible to the public, nor is it indexed by search engines.\n\nAs part of this prototype, we also prepared conceptual editorial visuals based on your public profile. We can easily replace them with your own preferred high-resolution photographs, or finalize and keep these upon launch.\n\nReviewing this carries zero cost and zero obligation. If you see value in having this live under your own domain, simply reply to this email and I will gladly share the details. If not, a brief note letting me know is just as appreciated, and we will quietly archive the preview.\n\nBest regards,\n\nHeorhii\nZonus Studio\nheorhii@zonus.co"}, {"id": "MED-090", "num": 13, "name": "Hon. Jack W. Raines", "location": "TX (Fort Worth / Dallas) | Тел: (866) 613-2825", "state": "TX", "tz": "CT", "email": "ftworthlaw@hotmail.com", "subject": "Question regarding your State Bar of Texas ADR profile", "link": "https://zonus.co/raines", "slug": "raines", "context": "Федеральный судья административного права США (USALJ), экс-спецпрокурор Комиссии по ценным бумагам (SEC) и помощник федерального прокурора. Более 1,500 проведенных медиаций.", "body": "Dear Judge Raines,\n\nMy name is Heorhii with Zonus Studio. While reviewing dispute resolution neutrals in the TX legal community, your distinguished service as a U.S. Administrative Law Judge, your former role as Special Counsel to the SEC and Assistant U.S. Attorney, and your milestone of over 1,500 mediations stood out as truly exceptional.\n\nGiven your distinguished career and the stature of your dispute resolution practice, we felt your work deserved a modern digital presentation of equal caliber. Rather than sending a generic presentation, our team took the initiative to build an unlisted, private web prototype tailored specifically to your background and mediation philosophy:\nhttps://zonus.co/raines\n\nPlease note that this is an unlisted, private page created exclusively for your personal review. It is not accessible to the public, nor is it indexed by search engines.\n\nAs part of this prototype, we also prepared conceptual editorial visuals based on your public profile. We can easily replace them with your own preferred high-resolution photographs, or finalize and keep these upon launch.\n\nReviewing this carries zero cost and zero obligation. If you see value in having this live under your own domain, simply reply to this email and I will gladly share the details. If not, a brief note letting me know is just as appreciated, and we will quietly archive the preview.\n\nBest regards,\n\nHeorhii\nZonus Studio\nheorhii@zonus.co"}, {"id": "MED-093", "num": 14, "name": "Thomas A. Cipolla, Esq.", "location": "TX (Austin) | Тел: (512) 472-8800", "state": "TX", "tz": "CT", "email": "tcipollapc@msn.com", "subject": "Question regarding your State Bar of Texas ADR profile", "link": "https://zonus.co/cipolla", "slug": "cipolla", "context": "UT Austin Law (1975), 45+ лет в State Bar of Texas, член AAM. Признанный нейтрал Остина по муниципальным спорам, дефектам коммерческого строительства и договорам подряда.", "body": "Dear Mr. Cipolla,\n\nMy name is Heorhii with Zonus Studio. While reviewing dispute resolution neutrals in the TX legal community, your University of Texas School of Law J.D., your 45-year Texas Bar milestone, and your seasoned mediation authority across commercial litigation, municipal, and construction disputes stood out as truly exceptional.\n\nGiven your distinguished career and the stature of your dispute resolution practice, we felt your work deserved a modern digital presentation of equal caliber. Rather than sending a generic presentation, our team took the initiative to build an unlisted, private web prototype tailored specifically to your background and mediation philosophy:\nhttps://zonus.co/cipolla\n\nPlease note that this is an unlisted, private page created exclusively for your personal review. It is not accessible to the public, nor is it indexed by search engines.\n\nAs part of this prototype, we also prepared conceptual editorial visuals based on your public profile. We can easily replace them with your own preferred high-resolution photographs, or finalize and keep these upon launch.\n\nReviewing this carries zero cost and zero obligation. If you see value in having this live under your own domain, simply reply to this email and I will gladly share the details. If not, a brief note letting me know is just as appreciated, and we will quietly archive the preview.\n\nBest regards,\n\nHeorhii\nZonus Studio\nheorhii@zonus.co"}, {"id": "MED-095", "num": 15, "name": "Mitchell F. Boomer, Esq.", "location": "TX (Austin / Georgetown) | Тел: (925) 519-6005", "state": "TX", "tz": "CT", "email": "mitchell.boomer@pm.me", "subject": "Question regarding your State Bar of Texas ADR profile", "link": "https://zonus.co/boomer", "slug": "boomer", "context": "Выпускник Golden Gate University Law, лицензирован в Калифорнии и Техасе. Специалист национального уровня по спорам топ-менеджмента, защите коммерческой тайны, соглашениям о неконкуренции.", "body": "Dear Mr. Boomer,\n\nMy name is Heorhii with Zonus Studio. While reviewing dispute resolution neutrals in the TX legal community, your Golden Gate University Law background, your dual California & Texas trial perspective, and your recognized neutral mastery across executive employment, non-compete, and corporate disputes stood out as truly exceptional.\n\nGiven your distinguished career and the stature of your dispute resolution practice, we felt your work deserved a modern digital presentation of equal caliber. Rather than sending a generic presentation, our team took the initiative to build an unlisted, private web prototype tailored specifically to your background and mediation philosophy:\nhttps://zonus.co/boomer\n\nPlease note that this is an unlisted, private page created exclusively for your personal review. It is not accessible to the public, nor is it indexed by search engines.\n\nAs part of this prototype, we also prepared conceptual editorial visuals based on your public profile. We can easily replace them with your own preferred high-resolution photographs, or finalize and keep these upon launch.\n\nReviewing this carries zero cost and zero obligation. If you see value in having this live under your own domain, simply reply to this email and I will gladly share the details. If not, a brief note letting me know is just as appreciated, and we will quietly archive the preview.\n\nBest regards,\n\nHeorhii\nZonus Studio\nheorhii@zonus.co"}];
 
 let currentFilter = "ALL";
-let sentState = JSON.parse(localStorage.getItem("zonus_adr_sent") || "{}");
+let sentState = JSON.parse(localStorage.getItem("zonus_adr_sent_15") || "{}");
 
 function updateSentCounter() {
   const sentCount = Object.keys(sentState).filter(k => sentState[k] && leads.some(l => l.id === k)).length;
@@ -111,7 +113,7 @@ function updateSentCounter() {
 function resetAllSent() {
   if (confirm("Сбросить все отметки об отправке?")) {
     sentState = {};
-    localStorage.removeItem("zonus_adr_sent");
+    localStorage.removeItem("zonus_adr_sent_15");
     updateSentCounter();
     renderCards();
   }
@@ -119,7 +121,7 @@ function resetAllSent() {
 
 function toggleSent(id) {
   sentState[id] = !sentState[id];
-  localStorage.setItem("zonus_adr_sent", JSON.stringify(sentState));
+  localStorage.setItem("zonus_adr_sent_15", JSON.stringify(sentState));
   updateSentCounter();
   renderCards();
 }
@@ -140,80 +142,10 @@ function copyToClipboard(text, btnElement, successText) {
     setTimeout(() => {
       btnElement.innerHTML = orig;
       btnElement.classList.remove("bg-emerald-600", "text-white");
-    }, 1800);
+    }, 2000);
+  }).catch(() => {
+    alert("Скопируйте вручную из поля предварительного просмотра.");
   });
-}
-
-function getLocalHourInTZ(tz) {
-  const timeZone = tz === "ET" ? "America/New_York" : tz === "CT" ? "America/Chicago" : "America/Los_Angeles";
-  const now = new Date();
-  const hourStr = new Intl.DateTimeFormat("en-US", { timeZone, hour: "numeric", hour12: false }).format(now);
-  const minStr = new Intl.DateTimeFormat("en-US", { timeZone, minute: "numeric" }).format(now);
-  const timeStr = new Intl.DateTimeFormat("en-US", { timeZone, hour: "numeric", minute: "numeric", hour12: true }).format(now);
-  const h = parseInt(hourStr, 10);
-  return { h, timeStr };
-}
-
-function getSendingStatus(tz) {
-  const { h, timeStr } = getLocalHourInTZ(tz);
-  let statusBadge = "";
-  let sendingTip = "";
-
-  // Morning Window: 9:00 - 11:30 (hours 9, 10, part of 11)
-  // Afternoon Window: 13:30 - 16:30 (hours 13, 14, 15, 16)
-  if (h >= 9 && h < 12) {
-    statusBadge = `<span class="px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold text-[11px] animate-pulse">🟢 ЗОЛОТОЕ ОКНО (УТРО) • ОТПРАВЛЯТЬ СЕЙЧАС</span>`;
-    sendingTip = `Сейчас идеальный момент для отправки! Медиатор на связи.`;
-  } else if (h >= 13 && h < 17) {
-    statusBadge = `<span class="px-2.5 py-1 rounded-md bg-sky-500/20 text-sky-300 border border-sky-500/40 font-bold text-[11px]">🔵 ДНЕВНОЕ ОКНО • МОЖНО ОТПРАВЛЯТЬ</span>`;
-    sendingTip = `Хорошее рабочее время в США. Высокая открываемость.`;
-  } else if (h >= 17 && h < 21) {
-    statusBadge = `<span class="px-2.5 py-1 rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/40 font-semibold text-[11px]">🟡 КОНЕЦ РАБОЧЕГО ДНЯ (после 17:00)</span>`;
-    sendingTip = `Рабочий день подходит к концу. Лучше отправить завтра утром или сейчас вдогонку.`;
-  } else {
-    statusBadge = `<span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-400 border border-slate-700 font-semibold text-[11px]">🌙 НОЧЬ / РАННЕЕ УТРО В США</span>`;
-    sendingTip = `Сейчас нерабочее время. Письмо рискует утонуть в ночной почте.`;
-  }
-
-  return { timeStr, statusBadge, sendingTip };
-}
-
-function generateEmailBody(item) {
-  return `${item.salutation}
-
-My name is Dmitrii with Zonus Studio. Over the past few weeks, our legal design team reviewed ${item.trigger}.
-
-Given your distinguished track record, we noticed that clients and litigation counsel searching for you online often see directory fragments rather than a modern, authoritative digital profile that reflects your true caliber.
-
-To show you what a modern presentation of your practice looks like, we built a bespoke private mobile showcase for you:
-👉 https://zonus.co/${item.slug}
-
-Key aspects designed specifically for your practice:
-• 100% individual factual positioning based on your real career milestones (no generic templates)
-• Studio-grade architectural portraiture designed to convey trust, warmth, and complete composure
-• A calm, anxiety-free structure ensuring corporate counsel and clients feel completely safe and confident in your guidance
-• Fully responsive layout with zero horizontal friction on mobile phones, tablets, and desktops
-
-We created this showcase for you entirely on our own initiative at zero cost and zero obligation. If you would like to keep, adjust, or use this landing page for your mediation practice, I would be glad to hand it over to you.
-
-Would you be open to a brief 5-minute phone or Zoom chat this week?
-
-Sincerely,
-
-Dmitrii
-Zonus Studio • Bespoke ADR Web Presentation
-Phone: +1 (650) 861-1200
-Web: https://zonus.co`;
-}
-
-function openMailClient(item) {
-  const subject = encodeURIComponent(item.subject);
-  const body = encodeURIComponent(generateEmailBody(item));
-  window.open(`mailto:${item.email}?subject=${subject}&body=${body}`, "_blank");
-  sentState[item.id] = true;
-  localStorage.setItem("zonus_adr_sent", JSON.stringify(sentState));
-  updateSentCounter();
-  renderCards();
 }
 
 function renderCards() {
@@ -224,113 +156,84 @@ function renderCards() {
 
   filtered.forEach((item, index) => {
     const isSent = !!sentState[item.id];
-    const emailBody = generateEmailBody(item);
-    const { timeStr, statusBadge, sendingTip } = getSendingStatus(item.tz);
-
-    const tzSchedule = item.tz === "ET" 
-      ? "Утро в США: 9:00–11:30 AM (Грузия: 18:00–20:30) • День в США: 1:30–4:30 PM (Грузия: 22:30–01:30)"
-      : item.tz === "CT"
-      ? "Утро в США: 9:00–11:30 AM (Грузия: 19:00–21:30) • День в США: 1:30–4:30 PM (Грузия: 23:30–02:30)"
-      : "Утро в США: 9:00–11:30 AM (Грузия: 21:00–23:30) • День в США: 1:30–4:30 PM (Грузия: 01:30–04:30)";
 
     const card = document.createElement("div");
     card.className = `card-item bg-slate-900 border rounded-2xl p-5 shadow-lg transition-all ${isSent ? "sent border-emerald-700/60" : "border-slate-800 hover:border-slate-700"}`;
 
+    const stateColor = item.state === 'CA' ? 'bg-indigo-900/60 text-indigo-300 border-indigo-700/50' : 
+                       item.state === 'FL' ? 'bg-amber-900/60 text-amber-300 border-amber-700/50' : 
+                       'bg-rose-900/60 text-rose-300 border-rose-700/50';
+
     card.innerHTML = `
-      <!-- Row 1: Header & Time Status -->
       <div class="flex items-start justify-between gap-4 flex-wrap sm:flex-nowrap border-b border-slate-800/80 pb-4 mb-4">
         <div class="flex items-start gap-3">
-          <div class="h-8 w-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center font-mono font-bold text-xs text-rose-400 shrink-0 mt-0.5">
-            ${index + 1}
+          <div class="h-8 w-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center font-mono font-bold text-xs text-sky-400 shrink-0 mt-0.5">
+            ${item.num}
           </div>
           <div>
             <div class="flex items-center gap-2 flex-wrap">
               <h2 class="font-bold text-lg text-white">${item.name}</h2>
               <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">${item.id}</span>
-              <span class="text-[11px] font-bold px-2 py-0.5 rounded ${item.state === 'CA' ? 'bg-indigo-900/60 text-indigo-300 border-indigo-700/50' : item.state === 'FL' ? 'bg-amber-900/60 text-amber-300 border-amber-700/50' : 'bg-rose-900/60 text-rose-300 border-rose-700/50'} border">${item.city}, ${item.state} (${item.tz})</span>
+              <span class="text-[11px] font-bold px-2 py-0.5 rounded ${stateColor} border">${item.location} (${item.tz})</span>
               <span class="status-badge text-[11px] font-bold px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">
-                ${isSent ? "✓ ОТПРАВЛЕНО" : "ОЖИДАЕТ"}
+                ${isSent ? "✓ ОТПРАВЛЕНО" : "В ЧЕРНОВИКАХ GMAIL"}
               </span>
             </div>
-            <p class="text-xs text-slate-400 mt-1">${item.ru_context}</p>
+            <p class="text-xs text-slate-400 mt-1">${item.context}</p>
           </div>
         </div>
 
         <!-- Direct Links & Toggle Sent -->
         <div class="flex items-center gap-2 shrink-0">
-          <a href="https://zonus.co/${item.slug}" target="_blank" class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-rose-950/60 text-rose-300 border border-rose-800/60 hover:bg-rose-900/80 transition flex items-center gap-1">
-            <span>🇺🇸 Лендинг (EN)</span> ↗
+          <a href="${item.link}" target="_blank" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-sky-950/60 text-sky-300 border border-sky-800/60 hover:bg-sky-900/80 transition flex items-center gap-1">
+            <span>🇺🇸 Открыть сайт (${item.slug})</span> ↗
           </a>
-          <a href="https://zonus.co/${item.slug}-ru" target="_blank" class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition flex items-center gap-1">
-            <span>🇷🇺 Проверка (RU)</span> ↗
-          </a>
-          <button onclick="toggleSent('${item.id}')" class="p-1.5 rounded-lg border text-xs font-mono ${isSent ? 'border-emerald-600 bg-emerald-950/40 text-emerald-300' : 'border-slate-700 text-slate-400 hover:text-slate-200'}">
-            ${isSent ? '✓ Снять отметку' : 'Отметить'}
+          <button onclick="toggleSent('${item.id}')" class="px-3 py-1.5 rounded-lg border text-xs font-mono ${isSent ? 'border-emerald-600 bg-emerald-950/40 text-emerald-300 font-bold' : 'border-slate-700 text-slate-400 hover:text-slate-200'}">
+            ${isSent ? '✓ Отправлено' : 'Отметить как отправленное'}
           </button>
         </div>
       </div>
 
-      <!-- Time & Schedule Banner inside Card -->
-      <div class="bg-slate-950/90 rounded-xl p-3 border border-slate-800 mb-4 flex items-center justify-between gap-3 flex-wrap">
-        <div class="flex items-center gap-3">
-          <div class="text-xs">
-            <span class="text-slate-500 font-mono">Текущее время у медиатора:</span>
-            <span class="text-white font-bold font-mono ml-1 text-sm">${timeStr} (${item.tz})</span>
-          </div>
-          <div>${statusBadge}</div>
-        </div>
-        <div class="text-[11px] text-slate-400 font-mono">
-          <span>📅 Лучшее окно:</span> <span class="text-rose-300 font-semibold">${tzSchedule}</span>
-        </div>
-      </div>
-
       <!-- Contact Bar -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4 text-xs font-mono">
-        <div class="bg-slate-950/80 p-2.5 rounded-xl border border-slate-800/80 flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <span class="text-slate-500">Email:</span>
-            <span class="text-slate-200 font-semibold select-all">${item.email}</span>
-          </div>
-          <button onclick="copyToClipboard('${item.email}', this, '✓')" class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Копировать</button>
+      <div class="mb-4 text-xs font-mono bg-slate-950/80 p-2.5 rounded-xl border border-slate-800/80 flex items-center justify-between flex-wrap gap-2">
+        <div class="flex items-center gap-2">
+          <span class="text-slate-500">Email:</span>
+          <span class="text-sky-300 font-semibold select-all">${item.email}</span>
         </div>
-        <div class="bg-slate-950/80 p-2.5 rounded-xl border border-slate-800/80 flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <span class="text-slate-500">Телефон:</span>
-            <span class="text-slate-200 font-semibold select-all">${item.phone}</span>
-          </div>
-          <a href="tel:${item.clean_phone}" class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Позвонить</a>
-        </div>
+        <button onclick="copyToClipboard('${item.email}', this, '✓ Email скопирован')" class="text-[11px] px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:bg-slate-700 transition">
+          Копировать email
+        </button>
       </div>
 
       <!-- Action Row: Subject & Email Copiers -->
       <div class="flex items-center justify-between gap-3 flex-wrap mb-3">
         <div class="flex items-center gap-2 flex-1 min-w-[280px]">
           <span class="text-xs text-slate-400 font-semibold shrink-0">Тема:</span>
-          <div class="bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800 text-xs text-rose-300 font-mono truncate flex-1 select-all">
+          <div class="bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800 text-xs text-sky-200 font-mono truncate flex-1 select-all">
             ${item.subject}
           </div>
-          <button onclick="copyToClipboard('${item.subject.replace(/'/g, "\'")}', this, '✓ Тема скопирована')" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 border border-slate-700 transition shrink-0">
+          <button onclick="copyToClipboard('${item.subject}', this, '✓ Тема скопирована')" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 border border-slate-700 transition shrink-0">
             Копировать тему
           </button>
         </div>
 
         <div class="flex items-center gap-2">
-          <button onclick="copyToClipboard(generateEmailBody(leads.find(l => l.id === '${item.id}')), this, '✓ Текст в буфере!')" class="px-4 py-1.5 text-xs font-bold rounded-lg bg-rose-600 hover:bg-rose-500 text-white shadow-md shadow-rose-950/50 transition flex items-center gap-1.5">
-            📋 Скопировать весь текст письма
+          <button onclick="copyToClipboard(leads.find(l => l.id === '${item.id}').body, this, '✓ Текст в буфере!')" class="px-4 py-1.5 text-xs font-bold rounded-lg bg-sky-600 hover:bg-sky-500 text-white shadow-md shadow-sky-950/50 transition flex items-center gap-1.5">
+            📋 Скопировать весь текст
           </button>
-          <button onclick="openMailClient(leads.find(l => l.id === '${item.id}'))" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center gap-1.5">
-            ✉️ Открыть в Почте
-          </button>
+          <a href="https://mail.google.com/mail/u/0/#drafts" target="_blank" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center gap-1.5">
+            ✉️ Открыть Черновики Gmail ↗
+          </a>
         </div>
       </div>
 
       <!-- Collapsible Text Preview -->
       <details class="text-xs text-slate-400">
         <summary class="cursor-pointer hover:text-slate-200 font-semibold text-[11px] uppercase tracking-wider text-slate-500 py-1">
-          Показать готовый текст письма для вставки
+          Показать готовый текст письма
         </summary>
         <div class="mt-2 p-3 bg-slate-950 rounded-xl border border-slate-800 font-mono text-[12px] text-slate-300 whitespace-pre-line leading-relaxed select-all">
-          ${emailBody}
+${item.body}
         </div>
       </details>
     `;
@@ -345,7 +248,7 @@ function updateUSTime() {
   const ct = new Intl.DateTimeFormat("en-US", { timeZone: "America/Chicago", hour: "numeric", minute: "numeric", second: "numeric", hour12: true }).format(now);
   const pt = new Intl.DateTimeFormat("en-US", { timeZone: "America/Los_Angeles", hour: "numeric", minute: "numeric", second: "numeric", hour12: true }).format(now);
 
-  document.getElementById("usTimeDisplay").innerText = `ET: ${et} • CT: ${ct} • PT: ${pt}`;
+  document.getElementById("usTimeDisplay").innerText = `ET: ${et} | CT: ${ct} | PT: ${pt}`;
 }
 
 setInterval(updateUSTime, 1000);
