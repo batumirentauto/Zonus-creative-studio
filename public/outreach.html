@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>ZONUS ADR — Веб-интерфейс рассылки (20 Медиаторов США)</title>
+<title>ZONUS ADR — Веб-интерфейс рассылки с расписанием отправки (16 Медиаторов)</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -39,9 +39,9 @@
         <div>
           <div class="flex items-center gap-2">
             <h1 class="font-extrabold text-base text-white tracking-tight">ZONUS ADR • OUTREACH CENTER</h1>
-            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">20 ТОП-МЕДИАТОРОВ США</span>
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">16 АКТИВНЫХ МЕДИАТОРОВ</span>
           </div>
-          <p class="text-xs text-slate-400">1-Click рассылка писем в Gmail с персональными лендингами на <span class="text-rose-400 font-mono font-semibold">zonus.co</span></p>
+          <p class="text-xs text-slate-400">Точное время отправки по часовым поясам США с персональными ссылками на <span class="text-rose-400 font-mono font-semibold">zonus.co</span></p>
         </div>
       </div>
 
@@ -49,29 +49,51 @@
       <div class="flex items-center gap-3">
         <div class="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/80 text-xs flex items-center gap-2">
           <span class="text-slate-400">Отправлено:</span>
-          <span id="sentCounter" class="font-mono font-bold text-emerald-400">0 / 20</span>
+          <span id="sentCounter" class="font-mono font-bold text-emerald-400">0 / 16</span>
         </div>
         <button onclick="resetAllSent()" class="text-xs text-slate-400 hover:text-slate-200 underline">Сбросить</button>
       </div>
     </div>
 
-    <!-- Timezone & State Filter Bar -->
-    <div class="max-w-6xl mx-auto mt-3 flex items-center justify-between gap-2 overflow-x-auto pb-1">
+    <!-- Live Clocks & Filter Bar -->
+    <div class="max-w-6xl mx-auto mt-3 flex items-center justify-between gap-2 overflow-x-auto pb-1 flex-wrap md:flex-nowrap">
       <div class="flex items-center gap-1.5 text-xs">
-        <span class="text-slate-400 text-[11px] uppercase tracking-wider font-semibold mr-1">Фильтр:</span>
-        <button onclick="setFilter('ALL')" class="tz-btn active px-3 py-1 rounded-md border border-slate-700 text-slate-300 transition" id="btn-ALL">Все (20)</button>
-        <button onclick="setFilter('ET')" class="tz-btn px-3 py-1 rounded-md border border-slate-700 text-slate-300 transition" id="btn-ET">Восток / ET • Флорида (6)</button>
-        <button onclick="setFilter('CT')" class="tz-btn px-3 py-1 rounded-md border border-slate-700 text-slate-300 transition" id="btn-CT">Центр / CT • Техас (11)</button>
-        <button onclick="setFilter('PT')" class="tz-btn px-3 py-1 rounded-md border border-slate-700 text-slate-300 transition" id="btn-PT">Запад / PT • Калифорния (3)</button>
+        <span class="text-slate-400 text-[11px] uppercase tracking-wider font-semibold mr-1">Фильтр поясов:</span>
+        <button onclick="setFilter('ALL')" class="tz-btn active px-3 py-1 rounded-md border border-slate-700 text-slate-300 transition text-xs" id="btn-ALL">Все (16)</button>
+        <button onclick="setFilter('ET')" class="tz-btn px-3 py-1 rounded-md border border-slate-700 text-slate-300 transition text-xs" id="btn-ET">Восток (ET) • Флорида (5)</button>
+        <button onclick="setFilter('CT')" class="tz-btn px-3 py-1 rounded-md border border-slate-700 text-slate-300 transition text-xs" id="btn-CT">Центр (CT) • Техас (9)</button>
+        <button onclick="setFilter('PT')" class="tz-btn px-3 py-1 rounded-md border border-slate-700 text-slate-300 transition text-xs" id="btn-PT">Запад (PT) • Калифорния (2)</button>
       </div>
-      <div class="text-[11px] text-slate-400 font-mono">
-        Местное время в США: <span id="usTimeDisplay" class="text-slate-200 font-semibold">...</span>
+
+      <!-- Live Clock Display -->
+      <div class="flex items-center gap-2 text-xs font-mono bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800 shrink-0">
+        <span class="text-slate-400">Живое время в США:</span>
+        <span id="usTimeDisplay" class="text-amber-400 font-bold">...</span>
       </div>
     </div>
   </header>
 
   <!-- MAIN LIST CONTAINER -->
   <main class="max-w-6xl mx-auto w-full px-4 pt-6 flex-1">
+    <!-- Sending Window Guide Banner -->
+    <div class="bg-gradient-to-r from-slate-900 via-rose-950/30 to-slate-900 border border-rose-900/40 rounded-2xl p-4 mb-6 text-xs text-slate-300 flex items-center justify-between gap-4 flex-wrap">
+      <div>
+        <div class="font-bold text-white text-sm mb-1 flex items-center gap-2">
+          <span>⏰ Золотые окна отправки для юристов и медиаторов в США:</span>
+        </div>
+        <p class="text-slate-400 leading-relaxed">
+          • <strong class="text-emerald-400">Утренний пик (рекомендуется):</strong> <span class="font-mono text-slate-200">9:00 AM – 11:30 AM</span> по времени медиатора (юристы приходят в офис и разбирают почту).<br>
+          • <strong class="text-amber-400">Дневное окно:</strong> <span class="font-mono text-slate-200">1:30 PM – 4:30 PM</span> по времени медиатора (после обеденных перерывов и судебных заседаний).
+        </p>
+      </div>
+      <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-[11px] font-mono shrink-0">
+        <div class="text-slate-400 mb-1">По вашему местному времени (Кипр / UTC+2):</div>
+        <div>🌴 Флорида (ET): <span class="text-rose-300 font-semibold">16:00 – 18:30</span></div>
+        <div>🤠 Техас (CT): <span class="text-rose-300 font-semibold">17:00 – 19:30</span></div>
+        <div>🌉 Калифорния (PT): <span class="text-rose-300 font-semibold">19:00 – 21:30</span></div>
+      </div>
+    </div>
+
     <div id="cardsList" class="flex flex-col gap-5"></div>
   </main>
 
@@ -82,7 +104,7 @@ let currentFilter = "ALL";
 let sentState = JSON.parse(localStorage.getItem("zonus_adr_sent") || "{}");
 
 function updateSentCounter() {
-  const sentCount = Object.keys(sentState).filter(k => sentState[k]).length;
+  const sentCount = Object.keys(sentState).filter(k => sentState[k] && leads.some(l => l.id === k)).length;
   document.getElementById("sentCounter").innerText = sentCount + " / " + leads.length;
 }
 
@@ -120,6 +142,40 @@ function copyToClipboard(text, btnElement, successText) {
       btnElement.classList.remove("bg-emerald-600", "text-white");
     }, 1800);
   });
+}
+
+function getLocalHourInTZ(tz) {
+  const timeZone = tz === "ET" ? "America/New_York" : tz === "CT" ? "America/Chicago" : "America/Los_Angeles";
+  const now = new Date();
+  const hourStr = new Intl.DateTimeFormat("en-US", { timeZone, hour: "numeric", hour12: false }).format(now);
+  const minStr = new Intl.DateTimeFormat("en-US", { timeZone, minute: "numeric" }).format(now);
+  const timeStr = new Intl.DateTimeFormat("en-US", { timeZone, hour: "numeric", minute: "numeric", hour12: true }).format(now);
+  const h = parseInt(hourStr, 10);
+  return { h, timeStr };
+}
+
+function getSendingStatus(tz) {
+  const { h, timeStr } = getLocalHourInTZ(tz);
+  let statusBadge = "";
+  let sendingTip = "";
+
+  // Morning Window: 9:00 - 11:30 (hours 9, 10, part of 11)
+  // Afternoon Window: 13:30 - 16:30 (hours 13, 14, 15, 16)
+  if (h >= 9 && h < 12) {
+    statusBadge = `<span class="px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold text-[11px] animate-pulse">🟢 ЗОЛОТОЕ ОКНО (УТРО) • ОТПРАВЛЯТЬ СЕЙЧАС</span>`;
+    sendingTip = `Сейчас идеальный момент для отправки! Медиатор на связи.`;
+  } else if (h >= 13 && h < 17) {
+    statusBadge = `<span class="px-2.5 py-1 rounded-md bg-sky-500/20 text-sky-300 border border-sky-500/40 font-bold text-[11px]">🔵 ДНЕВНОЕ ОКНО • МОЖНО ОТПРАВЛЯТЬ</span>`;
+    sendingTip = `Хорошее рабочее время в США. Высокая открываемость.`;
+  } else if (h >= 17 && h < 21) {
+    statusBadge = `<span class="px-2.5 py-1 rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/40 font-semibold text-[11px]">🟡 КОНЕЦ РАБОЧЕГО ДНЯ (после 17:00)</span>`;
+    sendingTip = `Рабочий день подходит к концу. Лучше отправить завтра утром или сейчас вдогонку.`;
+  } else {
+    statusBadge = `<span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-400 border border-slate-700 font-semibold text-[11px]">🌙 НОЧЬ / РАННЕЕ УТРО В США</span>`;
+    sendingTip = `Сейчас нерабочее время. Письмо рискует утонуть в ночной почте.`;
+  }
+
+  return { timeStr, statusBadge, sendingTip };
 }
 
 function generateEmailBody(item) {
@@ -169,11 +225,19 @@ function renderCards() {
   filtered.forEach((item, index) => {
     const isSent = !!sentState[item.id];
     const emailBody = generateEmailBody(item);
+    const { timeStr, statusBadge, sendingTip } = getSendingStatus(item.tz);
+
+    const tzSchedule = item.tz === "ET" 
+      ? "Утро США: 9:00–11:30 AM (По Кипру: 16:00–18:30) • День США: 1:30–4:30 PM (По Кипру: 20:30–23:30)"
+      : item.tz === "CT"
+      ? "Утро США: 9:00–11:30 AM (По Кипру: 17:00–19:30) • День США: 1:30–4:30 PM (По Кипру: 21:30–00:30)"
+      : "Утро США: 9:00–11:30 AM (По Кипру: 19:00–21:30) • День США: 1:30–4:30 PM (По Кипру: 23:30–02:30)";
 
     const card = document.createElement("div");
     card.className = `card-item bg-slate-900 border rounded-2xl p-5 shadow-lg transition-all ${isSent ? "sent border-emerald-700/60" : "border-slate-800 hover:border-slate-700"}`;
 
     card.innerHTML = `
+      <!-- Row 1: Header & Time Status -->
       <div class="flex items-start justify-between gap-4 flex-wrap sm:flex-nowrap border-b border-slate-800/80 pb-4 mb-4">
         <div class="flex items-start gap-3">
           <div class="h-8 w-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center font-mono font-bold text-xs text-rose-400 shrink-0 mt-0.5">
@@ -203,6 +267,20 @@ function renderCards() {
           <button onclick="toggleSent('${item.id}')" class="p-1.5 rounded-lg border text-xs font-mono ${isSent ? 'border-emerald-600 bg-emerald-950/40 text-emerald-300' : 'border-slate-700 text-slate-400 hover:text-slate-200'}">
             ${isSent ? '✓ Снять отметку' : 'Отметить'}
           </button>
+        </div>
+      </div>
+
+      <!-- Time & Schedule Banner inside Card -->
+      <div class="bg-slate-950/90 rounded-xl p-3 border border-slate-800 mb-4 flex items-center justify-between gap-3 flex-wrap">
+        <div class="flex items-center gap-3">
+          <div class="text-xs">
+            <span class="text-slate-500 font-mono">Текущее время у медиатора:</span>
+            <span class="text-white font-bold font-mono ml-1 text-sm">${timeStr} (${item.tz})</span>
+          </div>
+          <div>${statusBadge}</div>
+        </div>
+        <div class="text-[11px] text-slate-400 font-mono">
+          <span>📅 Лучшее окно:</span> <span class="text-rose-300 font-semibold">${tzSchedule}</span>
         </div>
       </div>
 
@@ -267,7 +345,7 @@ function updateUSTime() {
   const ct = new Intl.DateTimeFormat("en-US", { timeZone: "America/Chicago", hour: "numeric", minute: "numeric", second: "numeric", hour12: true }).format(now);
   const pt = new Intl.DateTimeFormat("en-US", { timeZone: "America/Los_Angeles", hour: "numeric", minute: "numeric", second: "numeric", hour12: true }).format(now);
 
-  document.getElementById("usTimeDisplay").innerText = `ET: ${et} | CT: ${ct} | PT: ${pt}`;
+  document.getElementById("usTimeDisplay").innerText = `ET: ${et} • CT: ${ct} • PT: ${pt}`;
 }
 
 setInterval(updateUSTime, 1000);
