@@ -87,10 +87,10 @@
         </p>
       </div>
       <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-[11px] font-mono shrink-0">
-        <div class="text-slate-400 mb-1">По вашему местному времени (Кипр / UTC+2):</div>
-        <div>🌴 Флорида (ET): <span class="text-rose-300 font-semibold">16:00 – 18:30</span></div>
-        <div>🤠 Техас (CT): <span class="text-rose-300 font-semibold">17:00 – 19:30</span></div>
-        <div>🌉 Калифорния (PT): <span class="text-rose-300 font-semibold">19:00 – 21:30</span></div>
+        <div class="text-slate-400 mb-1">По вашему местному времени (Грузия / Батуми / Тбилиси • UTC+4):</div>
+        <div>🌴 Флорида (ET): <span class="text-emerald-400 font-semibold">18:00 – 20:30</span> (утро в США: 9:00–11:30)</div>
+        <div>🤠 Техас (CT): <span class="text-emerald-400 font-semibold">19:00 – 21:30</span> (утро в США: 9:00–11:30)</div>
+        <div>🌉 Калифорния (PT): <span class="text-emerald-400 font-semibold">21:00 – 23:30</span> (утро в США: 9:00–11:30)</div>
       </div>
     </div>
 
@@ -228,10 +228,10 @@ function renderCards() {
     const { timeStr, statusBadge, sendingTip } = getSendingStatus(item.tz);
 
     const tzSchedule = item.tz === "ET" 
-      ? "Утро США: 9:00–11:30 AM (По Кипру: 16:00–18:30) • День США: 1:30–4:30 PM (По Кипру: 20:30–23:30)"
+      ? "Утро в США: 9:00–11:30 AM (Грузия: 18:00–20:30) • День в США: 1:30–4:30 PM (Грузия: 22:30–01:30)"
       : item.tz === "CT"
-      ? "Утро США: 9:00–11:30 AM (По Кипру: 17:00–19:30) • День США: 1:30–4:30 PM (По Кипру: 21:30–00:30)"
-      : "Утро США: 9:00–11:30 AM (По Кипру: 19:00–21:30) • День США: 1:30–4:30 PM (По Кипру: 23:30–02:30)";
+      ? "Утро в США: 9:00–11:30 AM (Грузия: 19:00–21:30) • День в США: 1:30–4:30 PM (Грузия: 23:30–02:30)"
+      : "Утро в США: 9:00–11:30 AM (Грузия: 21:00–23:30) • День в США: 1:30–4:30 PM (Грузия: 01:30–04:30)";
 
     const card = document.createElement("div");
     card.className = `card-item bg-slate-900 border rounded-2xl p-5 shadow-lg transition-all ${isSent ? "sent border-emerald-700/60" : "border-slate-800 hover:border-slate-700"}`;
