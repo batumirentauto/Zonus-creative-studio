@@ -45,7 +45,7 @@
     </div>
     <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4">
       <div class="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">🎯 Открыли страницу (Уникальные)</div>
-      <div id="metricUniqueMediators" class="text-3xl font-black text-emerald-400 font-mono">0 / 15</div>
+      <div id="metricUniqueMediators" class="text-3xl font-black text-emerald-400 font-mono">0 / 25</div>
     </div>
     <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4">
       <div class="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">📈 Конверсия в открытие</div>
@@ -57,10 +57,15 @@
     </div>
   </div>
 
-  <!-- MEDIATOR CARDS GRID (15 MEDIATORS) -->
-  <h2 class="text-base font-extrabold uppercase tracking-wider text-slate-300 mb-4 flex items-center gap-2">
-    <span>📋 Статус по каждому из 15 медиаторов</span>
-  </h2>
+  <!-- MEDIATOR CARDS GRID -->
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-base font-extrabold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+      <span id="mediatorGridTitle">📋 Статус по всем 25 медиаторам</span>
+    </h2>
+    <div class="text-xs text-slate-400 font-mono">
+      Вчерашняя отправка + активная база
+    </div>
+  </div>
   
   <div id="mediatorsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
     <!-- Populated by JS -->
@@ -98,21 +103,206 @@
 
 <script>
 const MEDIATORS = [
-  { id: "MED-000", name: "Meah Rothman Tell, Esq.", slug: "tell", state: "FL", city: "Tamarac", email: "meahtell@gmail.com" },
-  { id: "MED-014", name: "David C. Weinberg, Esq.", slug: "weinberg", state: "CA", city: "Palo Alto", email: "wzmlaw@comcast.net" },
-  { id: "MED-019", name: "Bruce Canter, Esq.", slug: "canter", state: "CA", city: "Aliso Viejo", email: "bcanter.strategy@gmail.com" },
-  { id: "MED-028", name: "Eben L. Kurtzman, Esq.", slug: "kurtzman", state: "CA", city: "San Jose", email: "brocc@juno.com" },
-  { id: "MED-046", name: "Hon. J. Crockett Farnell (Ret.)", slug: "farnell", state: "FL", city: "Clearwater", email: "crockett.farnell@gmail.com" },
-  { id: "MED-047", name: "D. Lawrence Rayburn, Esq.", slug: "rayburn", state: "FL", city: "Tampa", email: "larryrayburn75@gmail.com" },
-  { id: "MED-054", name: "Hon. Jeff Kottkamp", slug: "kottkamp", state: "FL", city: "Fort Myers", email: "jeffkottkamp@gmail.com" },
-  { id: "MED-074", name: "Cheryl L. McMullan, Esq.", slug: "mcmullan", state: "TX", city: "San Antonio", email: "attyelder@aol.com" },
-  { id: "MED-075", name: "Donald K. Eckhardt, Esq.", slug: "eckhardt", state: "TX", city: "Houston", email: "donaldk@aol.com" },
-  { id: "MED-077", name: "James M. ('Jay') Patterson", slug: "patterson", state: "TX", city: "Dallas", email: "jayjanp@earthlink.net" },
-  { id: "MED-081", name: "Linda W. Gibson, Esq.", slug: "gibson", state: "TX", city: "Temple", email: "lindawgibson@gmail.com" },
-  { id: "MED-084", name: "Hon. Renee M. Rusch (Ret. ALJ)", slug: "rusch", state: "TX", city: "Austin", email: "reneerusch@gmail.com" },
-  { id: "MED-090", name: "Hon. Jack W. Raines", slug: "raines", state: "TX", city: "Fort Worth", email: "ftworthlaw@hotmail.com" },
-  { id: "MED-093", name: "Thomas A. Cipolla, Esq.", slug: "cipolla", state: "TX", city: "Austin", email: "tcipollapc@msn.com" },
-  { id: "MED-095", name: "Mitchell F. Boomer, Esq.", slug: "boomer", state: "TX", city: "Georgetown", email: "mitchell.boomer@pm.me" }
+  {
+    "id": "MED-064",
+    "name": "Hon. James M. Barton II",
+    "slug": "barton",
+    "state": "FL",
+    "city": "Tampa",
+    "email": "jbarton71@verizon.net"
+  },
+  {
+    "id": "MED-060",
+    "name": "Hon. Guy W. Spicola",
+    "slug": "spicola",
+    "state": "FL",
+    "city": "Tampa",
+    "email": "gspicola@tampabay.rr.com"
+  },
+  {
+    "id": "MED-087",
+    "name": "Tom Collins, Esq.",
+    "slug": "collins",
+    "state": "TX",
+    "city": "Horseshoe Bay",
+    "email": "tomcollinsadr@gmail.com"
+  },
+  {
+    "id": "MED-089",
+    "name": "Hon. Frank Griffin",
+    "slug": "griffin",
+    "state": "TX",
+    "city": "Brownwood",
+    "email": "frankegriffin@hotmail.com"
+  },
+  {
+    "id": "MED-019",
+    "name": "Bruce Canter, Esq.",
+    "slug": "canter",
+    "state": "CA",
+    "city": "Aliso Viejo",
+    "email": "bcanter.strategy@gmail.com"
+  },
+  {
+    "id": "MED-028",
+    "name": "Eben L. Kurtzman, Esq.",
+    "slug": "kurtzman",
+    "state": "CA",
+    "city": "San Jose",
+    "email": "brocc@juno.com"
+  },
+  {
+    "id": "MED-047",
+    "name": "D. Lawrence Rayburn, Esq.",
+    "slug": "rayburn",
+    "state": "FL",
+    "city": "Tampa",
+    "email": "larryrayburn75@gmail.com"
+  },
+  {
+    "id": "MED-054",
+    "name": "Hon. Jeff Kottkamp",
+    "slug": "kottkamp",
+    "state": "FL",
+    "city": "Fort Myers",
+    "email": "jeffkottkamp@gmail.com"
+  },
+  {
+    "id": "MED-057",
+    "name": "Hon. Melvia B. Green (Ret.)",
+    "slug": "green",
+    "state": "FL",
+    "city": "Tampa / Miami",
+    "email": "melviabgreen@gmail.com"
+  },
+  {
+    "id": "MED-065",
+    "name": "Jon Curtiss Kieffer, Esq.",
+    "slug": "kieffer",
+    "state": "FL",
+    "city": "St. Petersburg",
+    "email": "jkieffer@kieffermadrid.com"
+  },
+  {
+    "id": "MED-066",
+    "name": "Leslie Reicin Stein, Esq.",
+    "slug": "stein",
+    "state": "FL",
+    "city": "Tampa",
+    "email": "leslie.stein2@verizon.net"
+  },
+  {
+    "id": "MED-074",
+    "name": "Cheryl L. McMullan, Esq.",
+    "slug": "mcmullan",
+    "state": "TX",
+    "city": "San Antonio",
+    "email": "cheryl@mcmullanlaw.com"
+  },
+  {
+    "id": "MED-081",
+    "name": "Linda W. Gibson, Esq.",
+    "slug": "gibson",
+    "state": "TX",
+    "city": "Temple",
+    "email": "lindawgibson@gmail.com"
+  },
+  {
+    "id": "MED-084",
+    "name": "Hon. Renee M. Rusch (Ret. ALJ)",
+    "slug": "rusch",
+    "state": "TX",
+    "city": "Austin",
+    "email": "reneerusch@gmail.com"
+  },
+  {
+    "id": "MED-086",
+    "name": "Sarah C. Sarahan, Esq.",
+    "slug": "sarahan",
+    "state": "TX",
+    "city": "Austin",
+    "email": "sarahcsarahan@gmail.com"
+  },
+  {
+    "id": "MED-090",
+    "name": "Hon. Jack W. Raines",
+    "slug": "raines",
+    "state": "TX",
+    "city": "Fort Worth",
+    "email": "jackraines@rainesadr.com"
+  },
+  {
+    "id": "MED-093",
+    "name": "Thomas A. Cipolla, Esq.",
+    "slug": "cipolla",
+    "state": "TX",
+    "city": "Austin",
+    "email": "tom@cipolla-adr.com"
+  },
+  {
+    "id": "MED-095",
+    "name": "Mitchell F. Boomer, Esq.",
+    "slug": "boomer",
+    "state": "TX",
+    "city": "Georgetown",
+    "email": "mitchboomer@gmail.com"
+  },
+  {
+    "id": "MED-096",
+    "name": "James M. (\"Jim\") Lober, Esq.",
+    "slug": "lober",
+    "state": "TX",
+    "city": "Houston",
+    "email": "jlober@loberlaw.com"
+  },
+  {
+    "id": "MED-097",
+    "name": "Gary W. Javore, Esq.",
+    "slug": "javore",
+    "state": "TX",
+    "city": "San Antonio",
+    "email": "gjavore@javedr.com"
+  },
+  {
+    "id": "MED-000",
+    "name": "Meah Rothman Tell, Esq.",
+    "slug": "tell",
+    "state": "FL",
+    "city": "Tamarac",
+    "email": "meahtell@gmail.com"
+  },
+  {
+    "id": "MED-014",
+    "name": "David C. Weinberg, Esq.",
+    "slug": "weinberg",
+    "state": "CA",
+    "city": "Palo Alto",
+    "email": "wzmlaw@comcast.net"
+  },
+  {
+    "id": "MED-046",
+    "name": "Hon. J. Crockett Farnell (Ret.)",
+    "slug": "farnell",
+    "state": "FL",
+    "city": "Clearwater",
+    "email": "crockett.farnell@gmail.com"
+  },
+  {
+    "id": "MED-075",
+    "name": "Donald K. Eckhardt, Esq.",
+    "slug": "eckhardt",
+    "state": "TX",
+    "city": "Houston",
+    "email": "donaldk@aol.com"
+  },
+  {
+    "id": "MED-077",
+    "name": "James M. ('Jay') Patterson",
+    "slug": "patterson",
+    "state": "TX",
+    "city": "Dallas",
+    "email": "jayjanp@earthlink.net"
+  }
 ];
 
 let visitsData = [];
@@ -121,7 +311,7 @@ function renderCards() {
   const container = document.getElementById('mediatorsGrid');
   container.innerHTML = '';
 
-  const openedSlugs = new Set(visitsData.map(v => (v.slug || '').replace(/^.*\//, '')));
+  const openedSlugs = new Set(visitsData.map(v => (v.slug || '').replace(/^.*\//, '').toLowerCase()));
 
   MEDIATORS.forEach(m => {
     const mediatorVisits = visitsData.filter(v => (v.slug || '').toLowerCase().includes(m.slug.toLowerCase()));
@@ -150,14 +340,16 @@ function renderCards() {
         </span>
       </div>
       <div class="font-bold text-sm text-white mb-1">${m.name}</div>
-      <div class="text-xs text-blue-400 font-mono mb-3">zonus.co/${m.slug}</div>
+      <div class="text-xs text-blue-400 font-mono mb-2">
+        <a href="https://zonus.co/${m.slug}" target="_blank" class="hover:underline">zonus.co/${m.slug}</a>
+      </div>
       ${
         isOpened && lastVisit
           ? `<div class="bg-slate-950/70 p-2.5 rounded border border-emerald-900/50 text-[11px] text-emerald-300 font-mono">
                <div>📍 ${lastVisit.city || 'US'}, ${lastVisit.region || lastVisit.country_code}</div>
                <div class="text-[10px] text-slate-400 mt-0.5">🕒 ${new Date(lastVisit.received_at || lastVisit.timestamp).toLocaleTimeString()} · ${lastVisit.device || 'Desktop'}</div>
              </div>`
-          : `<div class="text-[11px] text-slate-500">Письмо готово к отправке на ${m.email}</div>`
+          : `<div class="text-[11px] text-slate-500 truncate" title="${m.email}">Email: ${m.email}</div>`
       }
     `;
     container.appendChild(card);
@@ -166,10 +358,10 @@ function renderCards() {
   // Update Metrics
   const total = visitsData.length;
   const uniqueCount = openedSlugs.size;
-  const rate = ((uniqueCount / 15) * 100).toFixed(1);
+  const rate = MEDIATORS.length > 0 ? ((uniqueCount / MEDIATORS.length) * 100).toFixed(1) : '0.0';
 
   document.getElementById('metricTotalVisits').innerText = total;
-  document.getElementById('metricUniqueMediators').innerText = `${uniqueCount} / 15`;
+  document.getElementById('metricUniqueMediators').innerText = `${uniqueCount} / ${MEDIATORS.length}`;
   document.getElementById('metricConversionRate').innerText = `${rate}%`;
 
   const mobiles = visitsData.filter(v => (v.device || '').toLowerCase() === 'mobile').length;
@@ -192,7 +384,9 @@ function renderTable() {
     return `
       <tr class="hover:bg-slate-800/40 transition">
         <td class="py-2.5 px-4 text-slate-400">${timeStr}</td>
-        <td class="py-2.5 px-4 font-bold text-blue-400">zonus.co/${slugStr}</td>
+        <td class="py-2.5 px-4 font-bold text-blue-400">
+          <a href="https://zonus.co/${slugStr}" target="_blank" class="hover:underline">zonus.co/${slugStr}</a>
+        </td>
         <td class="py-2.5 px-4 text-emerald-400">${v.city || 'US'}, ${v.region || 'US'}</td>
         <td class="py-2.5 px-4 text-slate-400">${v.ip || '—'}</td>
         <td class="py-2.5 px-4 text-slate-300">${v.device || 'Desktop'}</td>
@@ -203,7 +397,8 @@ function renderTable() {
 
 async function fetchVisits() {
   try {
-    const res = await fetch('/api/track');
+    const endpoint = (window.location.protocol === 'file:') ? 'https://zonus.co/api/track' : '/api/track';
+    const res = await fetch(endpoint);
     if (res.ok) {
       const data = await res.json();
       visitsData = data.visits || [];

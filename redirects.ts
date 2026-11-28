@@ -100,6 +100,7 @@ export const redirects: NextConfig['redirects'] = async () => {
 
   // Mediator Showcases (20 US Mediators + Catalog & Outreach Dashboard)
   const mediatorRedirectsList = [
+    { source: "/analytics", destination: "/analytics.html", permanent: false },
     { source: "/outreach", destination: "https://mediators-production.up.railway.app/outreach.html", permanent: false },
     { source: "/mediators-catalog", destination: "https://mediators-production.up.railway.app/sites/", permanent: false },
     { source: "/tell", destination: "https://mediators-production.up.railway.app/", permanent: false },
